@@ -6,12 +6,11 @@ export const PosterMain = styled.div`
 `;
 
 export const PosterExhibition = styled.div`
-width: 326px;
-height: 459px;`;
-
-export const PosterCommunity = styled.div`
-  // 스타일링 코드
+  width: 326px;
+  height: 459px;
 `;
+
+export const PosterCommunity = styled.div``;
 
 export const PosterLocation = styled.div`
   // 스타일링 코드

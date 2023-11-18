@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const ReviewPosterWrap = styled.a`
   display: block;
-  border: 1px solid #eee;
-  box-shadow: 4px 6px 6px 0px rgba(0, 0, 0, 0.12);
+  border-right: 1px solid #ddd;
+  // box-shadow: 4px 6px 6px 0px rgba(0, 0, 0, 0.12);
 
   img {
     width: 100%;

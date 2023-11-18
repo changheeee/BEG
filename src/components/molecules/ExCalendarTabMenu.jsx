@@ -18,10 +18,24 @@ const CategoryTab = styled.ul`
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 
+  overflow-x: scroll;
+  scrollbar-height: 0;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
   > li {
     font-weight: 500;
     font-size: 1.125rem;
     cursor: pointer;
+    white-space: nowrap;
   }
 `;
 
@@ -77,7 +91,7 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
     (item) =>
       (selectedCategory === "전체" || item.category === selectedCategory) &&
       formatDate(item.start) <= selectedDate &&
-      formatDate(item.end) >= selectedDate
+      formatDate(item.end) >= selectedDate,
   );
 
   return (

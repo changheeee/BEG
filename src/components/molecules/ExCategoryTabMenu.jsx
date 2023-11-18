@@ -17,10 +17,24 @@ const CategoryTab = styled.ul`
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 
+  overflow-x: scroll;
+  scrollbar-height: 0;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
   > li {
     font-weight: 500;
     font-size: 1.125rem;
     cursor: pointer;
+    white-space: nowrap;
   }
 `;
 
@@ -29,6 +43,10 @@ const ExhibitionListWrap = styled.ul`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 
   > li {
     margin-bottom: 1.25rem;
@@ -102,7 +120,7 @@ export default function ExCategoryTabMenu({ data }) {
               (selectedCategory === "전체" ||
                 item.category === selectedCategory) &&
               formatDate(item.start) <= currentDate &&
-              formatDate(item.end) >= currentDate
+              formatDate(item.end) >= currentDate,
           )
           .map((item, index) => (
             <ListVertical key={index} item={item} />
