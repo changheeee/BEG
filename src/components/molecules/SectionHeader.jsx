@@ -10,7 +10,7 @@ const SectionHeaderWrap = styled.div`
   font-size: 2rem;
   font-weight: 600;
   color: ${(props) => {
-    switch (props.bgType) {
+    switch (props.bgtype) {
       case "exhibition":
         return `#333;`;
       case "location":
@@ -27,7 +27,7 @@ const SectionHeaderWrap = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-image: ${(props) => {
-    switch (props.bgType) {
+    switch (props.bgtype) {
       case "exhibition":
         return `url(/images/bg_exhibition.png)`;
       case "location":
@@ -65,5 +65,5 @@ export default function SectionHeader({
     sectionTitle = "검색결과 입니다.";
   }
 
-  return <SectionHeaderWrap bgType={bgType}>{sectionTitle}</SectionHeaderWrap>;
+  return <SectionHeaderWrap bgtype={bgType}>{sectionTitle}</SectionHeaderWrap>;
 }

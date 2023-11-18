@@ -20,13 +20,13 @@ export default function MenuButton() {
   return (
     <Menu>
       <li>
-        <a href="">공연・전시</a>
+        <a href="/exhibition">공연・전시</a>
       </li>
       <li>
         <a href="">공연・전시공간</a>
       </li>
       <li>
-        <a href="">커뮤니티</a>
+        <a href="/community">커뮤니티</a>
       </li>
       <li>
         <a href="">소개</a>

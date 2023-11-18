@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import { GlobalStyles } from "./styles";
 import NavBar from "./components/organisms/NavBar";
 import Footer from "./components/organisms/Footer";
 import Exhibition from "./components/template/Exhibition";
+import Community from "./components/template/Community";
 const Wrapper = styled.div`
   padding-top: 80px;
   display: flex;
@@ -19,13 +22,18 @@ const ContentWrapper = styled.div`
 
 export default function App() {
   return (
-    <Wrapper>
-      <GlobalStyles />
-      <NavBar />
-      <ContentWrapper>
-        <Exhibition />
-      </ContentWrapper>
-      <Footer />
-    </Wrapper>
+    <Router>
+      <Wrapper>
+        <GlobalStyles />
+        <NavBar />
+        <ContentWrapper>
+          <Routes>
+            <Route path="/exhibition" element={<Exhibition />} />
+            <Route path="/community" element={<Community />} />
+          </Routes>
+        </ContentWrapper>
+        <Footer />
+      </Wrapper>
+    </Router>
   );
 }

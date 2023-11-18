@@ -119,6 +119,59 @@
       "category": "콘서트",
       "src": "/images/poster1.png",
       "bookmarked": 0
+    },
+    {
+      "id": 12,
+      "title": "나중에 하는 전시",
+      "location": "영영영",
+      "start": "2023.12.23",
+      "end": "2024.01.23",
+      "category": "콘서트",
+      "src": "",
+      "bookmarked": 0
+    }
+  ],
+  "posts": [
+    {
+      "id": 0,
+      "ex_title": "FxA Project 2023",
+      "ex_category": "전시",
+      "author": "김창희",
+      "title": "FxA Project 2023 관람후기",
+      "content": "잘 봤습니다",
+      "views": 22,
+      "likes": 5,
+      "src": "/images/poster1.png"
+    },
+    {
+      "id": 1,
+      "ex_title": "창작 오페라",
+      "ex_category": "오페라",
+      "author": "김창희",
+      "title": "창작 오페라 관람후기",
+      "content": "너무 감명깊어요",
+      "views": 22,
+      "likes": 7
+    },
+    {
+      "id": 2,
+      "ex_title": "재밌는 뮤지컬",
+      "ex_category": "뮤지컬",
+      "author": "김창희",
+      "title": "재밌는 뮤지컬 관람후기",
+      "content": "정말 재밌었어요",
+      "views": 22,
+      "likes": 13
+    },
+    {
+      "id": 3,
+      "ex_title": "내한콘서트",
+      "ex_category": "콘서트",
+      "author": "김창희",
+      "title": "내한콘서트 관람후기",
+      "content": "감동적이에요",
+      "views": 22,
+      "likes": 10
     }
   ]
 }

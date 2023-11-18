@@ -51,6 +51,11 @@ const CATEGORIES = [
   "서커스/마술",
 ];
 
+const formatDate = (dateString) => {
+  const [year, month, day] = dateString.split(".");
+  return new Date(`${year}-${month}-${day}`);
+};
+
 export default function ExCategoryTabMenu({ data }) {
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [sortType, setSortType] = useState("date");
@@ -60,6 +65,9 @@ export default function ExCategoryTabMenu({ data }) {
   };
 
   let sortedData = [...data.list];
+
+  // 현재 날짜를 가져옵니다.
+  const currentDate = new Date();
 
   if (sortType === "bookmarked") {
     sortedData.sort((a, b) => b.bookmarked - a.bookmarked);
@@ -91,7 +99,10 @@ export default function ExCategoryTabMenu({ data }) {
         {sortedData
           .filter(
             (item) =>
-              selectedCategory === "전체" || item.category === selectedCategory,
+              (selectedCategory === "전체" ||
+                item.category === selectedCategory) &&
+              formatDate(item.start) <= currentDate &&
+              formatDate(item.end) >= currentDate
           )
           .map((item, index) => (
             <ListVertical key={index} item={item} />

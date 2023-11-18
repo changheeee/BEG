@@ -1,3 +1,4 @@
+// ExCalendarTabMenu.js
 import React, { useState } from "react";
 import styled from "styled-components";
 import SortedButton from "../atoms/SortedButton";
@@ -72,6 +73,13 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
     sortedData.reverse();
   }
 
+  const filteredData = sortedData.filter(
+    (item) =>
+      (selectedCategory === "전체" || item.category === selectedCategory) &&
+      formatDate(item.start) <= selectedDate &&
+      formatDate(item.end) >= selectedDate
+  );
+
   return (
     <>
       <CategoryTab>
@@ -92,17 +100,13 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
         <SortedButton setSortType={setSortType} />
       </SortedWrap>
       <ExhibitionListWrap>
-        {sortedData
-          .filter(
-            (item) =>
-              (selectedCategory === "전체" ||
-                item.category === selectedCategory) &&
-              formatDate(item.start) <= selectedDate &&
-              formatDate(item.end) >= selectedDate
-          )
-          .map((item, index) => (
+        {filteredData.length > 0 ? (
+          filteredData.map((item, index) => (
             <ListVertical key={index} item={item} />
-          ))}
+          ))
+        ) : (
+          <p>선택된 날짜에 해당하는 공연・전시가 없습니다</p>
+        )}
       </ExhibitionListWrap>
     </>
   );

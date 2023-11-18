@@ -17,8 +17,8 @@ const NavContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 80px;
-  background: #fefefe;
-  border-bottom: 1px solid #ccc;
+  background: #fefefedb;
+  border-bottom: 0.5px solid #ccc;
 `;
 
 const NavLeft = styled.div`
