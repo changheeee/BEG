@@ -138,7 +138,7 @@
       "category": "전시",
       "author": "김창희",
       "title": "FxA Project 2023 관람후기",
-      "content": "잘 봤습니다",
+      "content": "FxA Project 2023 전시를 관람했습니다. 현대적이고 창의적인 작품들이 인상적이었어요. 특히 예술가들의 실험적인 시도와 다양한 매체의 조합이 돋보였습니다. 전체적으로 독특하고 혁신적인 느낌을 받았는데, 특히 작품들 간의 연결고리와 흐름이 잘 구성되어 있어 전시를 둘러보는 동안 흥미로웠습니다. 다음 전시도 기대됩니다!",
       "views": 22,
       "likes": 5,
       "src": "/images/poster1.png"
@@ -147,7 +147,7 @@
       "id": 1,
       "ex_title": "창작 오페라",
       "category": "오페라",
-      "author": "김창희",
+      "author": "정오페라",
       "title": "창작 오페라 관람후기",
       "content": "너무 감명깊어요",
       "views": 22,
@@ -157,7 +157,7 @@
       "id": 2,
       "ex_title": "재밌는 뮤지컬",
       "category": "뮤지컬",
-      "author": "김창희",
+      "author": "박뮤지컬",
       "title": "재밌는 뮤지컬 관람후기",
       "content": "정말 재밌었어요",
       "views": 22,
@@ -167,11 +167,21 @@
       "id": 3,
       "ex_title": "내한콘서트",
       "category": "콘서트",
-      "author": "김창희",
+      "author": "이콘서트",
       "title": "내한콘서트 관람후기",
       "content": "감동적이에요",
       "views": 22,
       "likes": 10
+    },
+    {
+      "id": 4,
+      "ex_title": "발레공연",
+      "category": "무용",
+      "author": "김무용",
+      "title": "발레공연 관람후기",
+      "content": "감동적이에요",
+      "views": 22,
+      "likes": 18
     }
   ]
 }
