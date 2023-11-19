@@ -45,8 +45,10 @@ const ExhibitionListWrap = styled.ul`
   justify-content: space-between;
   flex-wrap: wrap;
 
-  > li {
-    margin-bottom: 1.25rem;
+  @media (max-width: 768px) {
+    > li:last-child {
+      border-bottom: 0;
+    }
   }
 `;
 

@@ -40,6 +40,11 @@ const SectionHeaderWrap = styled.div`
         return "none";
     }
   }};
+
+  @media (max-width: 768px) {
+    height: 100px;
+    font-size: 1.5rem;
+  }
 `;
 
 export default function SectionHeader({

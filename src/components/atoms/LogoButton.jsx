@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const Logo = styled.a`
-  /* background: url(${(props) => props.imageUrl}) cover; */
+  display: block;
+  height: auto;
+  > img {
+    height: 100%;
+  }
 `;
 
 export default function LogoButton({ nav }) {

@@ -14,6 +14,17 @@ const Menu = styled.ul`
   li:hover {
     font-weight: 600;
   }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+    li {
+      margin-right: 0;
+    }
+  }
 `;
 
 export default function MenuButton() {

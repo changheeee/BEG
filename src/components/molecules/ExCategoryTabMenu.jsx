@@ -45,11 +45,9 @@ const ExhibitionListWrap = styled.ul`
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    justify-content: center;
-  }
-
-  > li {
-    margin-bottom: 1.25rem;
+    > li:last-child {
+      border-bottom: 0;
+    }
   }
 `;
 

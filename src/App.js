@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+
+  @media (max-width: 768px) {
+    padding-top: 50px;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -28,6 +32,7 @@ export default function App() {
         <NavBar />
         <ContentWrapper>
           <Routes>
+            <Route path="/" element={<Exhibition />} />
             <Route path="/exhibition" element={<Exhibition />} />
             <Route path="/community" element={<Community />} />
           </Routes>

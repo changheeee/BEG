@@ -12,9 +12,29 @@ const ListVerticalWrap = styled.li`
   display: flex;
   flex-direction: column;
   width: fit-content;
+  margin-bottom: 1.25rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0;
+    width: 100%;
+    height: 160px;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+
+  }
 `;
+
 const ListBottom = styled.div`
   margin-top: 0.75rem;
+
+  @media (max-width: 768px) {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    margin-top: 0;
+  }
 `;
 
 const BadgeWrap = styled.div`
@@ -22,6 +42,10 @@ const BadgeWrap = styled.div`
   margin-top: 0.3rem;
   > * {
     margin-right: 0.3rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 0;
   }
 `;
 
@@ -32,9 +56,11 @@ export default function ListVertical({ item }) {
         <ExListPoster item={item} />
       </PosterExhibition>
       <ListBottom>
-        <ExListTitle item={item} />
-        <ExListLocation item={item} />
-        <ExListPeriod item={item} />
+        <div>
+          <ExListTitle item={item} />
+          <ExListLocation item={item} />
+          <ExListPeriod item={item} />
+        </div>
         <BadgeWrap>
           <CategoryBadge item={item} />
           <DdayBadge item={item} />
