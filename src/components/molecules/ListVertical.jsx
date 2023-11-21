@@ -21,17 +21,18 @@ const ListVerticalWrap = styled.li`
     flex-direction: row;
     align-items: center;
     border-bottom: 1px solid #ddd;
-
   }
 `;
 
-const ListBottom = styled.div`
+const ListInfo = styled.div`
   margin-top: 0.75rem;
 
   @media (max-width: 768px) {
+    height: 130px;
     padding-left: 1.25rem;
     display: flex;
     flex-direction: column-reverse;
+    justify-content: flex-end;
     gap: 1rem;
     margin-top: 0;
   }
@@ -55,7 +56,7 @@ export default function ListVertical({ item }) {
       <PosterExhibition>
         <ExListPoster item={item} />
       </PosterExhibition>
-      <ListBottom>
+      <ListInfo>
         <div>
           <ExListTitle item={item} />
           <ExListLocation item={item} />
@@ -65,7 +66,7 @@ export default function ListVertical({ item }) {
           <CategoryBadge item={item} />
           <DdayBadge item={item} />
         </BadgeWrap>
-      </ListBottom>
+      </ListInfo>
     </ListVerticalWrap>
   );
 }

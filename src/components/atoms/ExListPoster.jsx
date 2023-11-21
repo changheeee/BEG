@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 const ExListPosterWrap = styled.a`
   display: block;
+  width: 100%;
+  height: 100%;
   border: 1px solid #eee;
   box-shadow: 4px 6px 6px 0px rgba(0, 0, 0, 0.12);
 

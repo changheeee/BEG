@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { PosterCommunity } from "../atoms/PosterStyle";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { PosterCommunityBest } from "../atoms/PosterStyle";
 import data from "../../MOCK_DATA.json";
 import ReviewPoster from "../atoms/ReviewPoster";
 import CategoryBadge from "../atoms/CategoryBadge";
@@ -17,13 +19,17 @@ const ListBestWrap = styled.ul`
   }
 
   @media (max-width: 768px) {
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+
     > li:first-child {
       margin-top: 0;
     }
     > li:nth-child(2),
     > li:nth-child(3),
     > li:nth-child(4) {
-      margin-top: 10px;
+      margin-top: 0px;
     }
   }
 `;
@@ -37,34 +43,48 @@ const ListBestContainer = styled.li`
 
   @media (max-width: 768px) {
     width: 100%;
+    border: none;
   }
 `;
 //베스트리뷰 좌측 이미지영역
 const Left = styled.div`
   width: 25%;
   height: 100%;
+
+  @media (max-width: 768px) {
+    width: auto;
+  }
 `;
 
-//베스틜뷰 우측 글 정보 영역
+//베스트리뷰 우측 글 정보 영역
 const Right = styled.div`
   width: 75%;
   padding: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-left: 1px solid #ddd;
+
+  @media (max-width: 768px) {
+    width: auto;
+    padding: 15px;
+  }
 `;
 const BestHeader = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 0.5rem;
 
   //제목
   > h4 {
+    text-align: left;
     font-weight: 600;
     font-size: 1.125rem;
   }
   //본문 미리보기
   > p {
+    text-align: left;
     font-size: 0.875rem;
     line-height: 1.15;
     color: #555;
@@ -73,6 +93,17 @@ const BestHeader = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 3; // 표시할 줄 수
     -webkit-box-orient: vertical;
+  }
+
+  @media (max-width: 768px) {
+    > h4 {
+      margin-top: 0.3rem;
+      font-size: 1rem;
+    }
+
+    > p {
+      display: none;
+    }
   }
 `;
 
@@ -115,49 +146,117 @@ const BestFooter = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    ul {
+      gap: 0.4rem;
+    }
+  }
 `;
 
 export default function ListBest() {
-  // 좋아요(likes)가 높은 순으로 데이터를 정렬합니다.
   const sortedPosts = data.posts.sort((a, b) => b.likes - a.likes);
-
-  // 좋아요가 가장 높은 상위 4개의 게시물만 선택합니다.
   const topPosts = sortedPosts.slice(0, 4);
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const isMobile = windowWidth <= 768;
 
   return (
     <ListBestWrap>
-      {topPosts.map((item, index) => (
-        <ListBestContainer key={index}>
-          <Left>
-            <PosterCommunity>
+      {isMobile ? (
+        <Carousel
+          showThumbs={false}
+          // autoPlay={true}
+          // infiniteLoop={true}
+          showStatus={false}
+          showIndicators={false}
+          emulateTouch={true}
+          dynamicHeight={true}
+          useKeyboardArrows={false}
+          stopOnHover={true}
+        >
+          {topPosts.map((item, index) => (
+            <ListBestContainer key={index}>
+              <Left>
+                <PosterCommunityBest>
+                  <ReviewPoster item={item} />
+                </PosterCommunityBest>
+              </Left>
+              <Right>
+                <BestHeader>
+                  <ExInfo>
+                    <CategoryBadge item={item} />
+                    <span>[{item.ex_title}]</span>
+                  </ExInfo>
+                  <h4>{item.title}</h4>
+                  <p>{item.content}</p>
+                </BestHeader>
+                <BestFooter>
+                  <span>{item.author}</span>
+                  <ul>
+                    <li>
+                      <img src="/images/ico_views.svg" />
+                      <span>{item.views}</span>
+                    </li>
+                    <li>
+                      <img src="/images/ico_likes.svg" />
+                      <span>{item.likes}</span>
+                    </li>
+                  </ul>
+                </BestFooter>
+              </Right>
+            </ListBestContainer>
+          ))}
+        </Carousel>
+      ) : (
+        topPosts.map((item, index) => (
+          <ListBestContainer key={index}>
+            <Left>
               <ReviewPoster item={item} />
-            </PosterCommunity>
-          </Left>
-          <Right>
-            <BestHeader>
-              <ExInfo>
-                <CategoryBadge item={item} />
-                <span>[{item.ex_title}]</span>
-              </ExInfo>
-              <h4>{item.title}</h4>
-              <p>{item.content}</p>
-            </BestHeader>
-            <BestFooter>
-              <span>{item.author}</span>
-              <ul>
-                <li>
-                  <img src="/images/ico_views.svg" />
-                  <span>{item.views}</span>
-                </li>
-                <li>
-                  <img src="/images/ico_likes.svg" />
-                  <span>{item.likes}</span>
-                </li>
-              </ul>
-            </BestFooter>
-          </Right>
-        </ListBestContainer>
-      ))}
+            </Left>
+            <Right>
+              <BestHeader>
+                <ExInfo>
+                  <CategoryBadge item={item} />
+                  <span>[{item.ex_title}]</span>
+                </ExInfo>
+                <h4>{item.title}</h4>
+                <p>{item.content}</p>
+              </BestHeader>
+              <BestFooter>
+                <span>{item.author}</span>
+                <ul>
+                  <li>
+                    <img src="/images/ico_views.svg" />
+                    <span>{item.views}</span>
+                  </li>
+                  <li>
+                    <img src="/images/ico_likes.svg" />
+                    <span>{item.likes}</span>
+                  </li>
+                </ul>
+              </BestFooter>
+            </Right>
+          </ListBestContainer>
+        ))
+      )}
     </ListBestWrap>
   );
 }

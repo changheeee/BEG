@@ -4,6 +4,7 @@ import styled from "styled-components";
 import SortedButton from "../atoms/SortedButton";
 import Today from "../atoms/Today";
 import ListVertical from "./ListVertical";
+import { ExhibitionListWrap } from "./ExCategoryTabMenu";
 
 const SortedWrap = styled.div`
   display: flex;
@@ -36,19 +37,6 @@ const CategoryTab = styled.ul`
     font-size: 1.125rem;
     cursor: pointer;
     white-space: nowrap;
-  }
-`;
-
-const ExhibitionListWrap = styled.ul`
-  margin-top: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  @media (max-width: 768px) {
-    > li:last-child {
-      border-bottom: 0;
-    }
   }
 `;
 

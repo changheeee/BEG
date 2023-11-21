@@ -11,6 +11,7 @@
     "react-calendar": "4.6.1",
     "react-dom": "18.2.0",
     "react-horizontal-datepicker": "^2.0.3",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.19.0",
     "react-scripts": "5.0.1",
     "recoil": "0.7.7",

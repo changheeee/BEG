@@ -8,7 +8,6 @@ const TodayAndSorted = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
 const CategoryTab = styled.ul`
   margin: 0.75rem 0;
   display: flex;
@@ -38,13 +37,16 @@ const CategoryTab = styled.ul`
   }
 `;
 
-const ExhibitionListWrap = styled.ul`
+export const ExhibitionListWrap = styled.ul`
   margin-top: 1.25rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: flex-start;
+
     > li:last-child {
       border-bottom: 0;
     }

@@ -16,6 +16,9 @@ export const PosterExhibition = styled.div`
   }
 `;
 
-export const PosterCommunity = styled.div``;
+export const PosterCommunityBest = styled.div`
+  width: 100px;
+  height: ${100 * aspectRatio}px;
+`;
 
 export const PosterLocation = styled.div``;
