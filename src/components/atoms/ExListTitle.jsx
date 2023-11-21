@@ -9,7 +9,7 @@ const ExListTit = styled.a`
 export default function ExListTitle({ item }) {
   return (
     <div>
-      <ExListTit href="상세페이지주소">{item.title}</ExListTit>
+      <ExListTit href={`/ex_detail/${item.id}`}>{item.title}</ExListTit>
     </div>
   );
 }

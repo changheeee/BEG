@@ -108,7 +108,7 @@ const BestHeader = styled.div`
 `;
 
 //베스트 리뷰 상단 전시정보
-const ExInfo = styled.div`
+const BestTop = styled.div`
   display: flex;
   align-items: center;
   gap: 0.3rem;
@@ -201,10 +201,10 @@ export default function ListBest() {
               </Left>
               <Right>
                 <BestHeader>
-                  <ExInfo>
+                  <BestTop>
                     <CategoryBadge item={item} />
                     <span>[{item.ex_title}]</span>
-                  </ExInfo>
+                  </BestTop>
                   <h4>{item.title}</h4>
                   <p>{item.content}</p>
                 </BestHeader>
@@ -233,10 +233,10 @@ export default function ListBest() {
             </Left>
             <Right>
               <BestHeader>
-                <ExInfo>
+                <BestTop>
                   <CategoryBadge item={item} />
                   <span>[{item.ex_title}]</span>
-                </ExInfo>
+                </BestTop>
                 <h4>{item.title}</h4>
                 <p>{item.content}</p>
               </BestHeader>

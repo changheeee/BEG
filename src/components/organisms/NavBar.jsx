@@ -63,13 +63,14 @@ const MobileNavContainer = styled.div`
   }
 `;
 const MobileMenu = styled.div`
+  z-index: 9998;
   position: fixed;
   top: 50px;
   padding: 20px;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #fefefedb;
+  background: #fefefeed;
 
   @media (min-width: 769px) {
     display: none;
@@ -82,6 +83,16 @@ export default function NavBar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  //모바일 메뉴 열려있으면 스크롤 제한
+  if (isMenuOpen) {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+
   return (
     <>
       <NavContainer>

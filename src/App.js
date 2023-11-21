@@ -6,6 +6,9 @@ import NavBar from "./components/organisms/NavBar";
 import Footer from "./components/organisms/Footer";
 import Exhibition from "./components/template/Exhibition";
 import Community from "./components/template/Community";
+import Main from "./components/template/Main";
+import ExDetail from "./components/template/ExDetail";
+
 const Wrapper = styled.div`
   padding-top: 80px;
   display: flex;
@@ -32,9 +35,10 @@ export default function App() {
         <NavBar />
         <ContentWrapper>
           <Routes>
-            <Route path="/" element={<Exhibition />} />
+            <Route path="/" element={<Main />} />
             <Route path="/exhibition" element={<Exhibition />} />
             <Route path="/community" element={<Community />} />
+            <Route path="/ex_detail/:id" element={<ExDetail />} />
           </Routes>
         </ContentWrapper>
         <Footer />

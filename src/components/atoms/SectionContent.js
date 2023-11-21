@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SectionContent = styled.div`
+export const SectionContent = styled.div`
   width: 100%;
   padding: 100px;
 
@@ -9,4 +9,11 @@ const SectionContent = styled.div`
   }
 `;
 
-export default SectionContent;
+export const DetailContent = styled.div`
+  width: 100%;
+  padding: 100px 200px;
+
+  @media (max-width: 768px) {
+    padding: 50px 20px;
+  }
+`;

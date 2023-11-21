@@ -1,6 +1,6 @@
 import React from "react";
 // import styled from "styled-components";
-import SectionContent from "../atoms/SectionContent";
+import { SectionContent } from "../atoms/SectionContent";
 import SectionHeader from "../molecules/SectionHeader";
 import ListBest from "../molecules/ListBest";
 
