@@ -7,6 +7,10 @@ const Logo = styled.a`
   > img {
     height: 100%;
   }
+
+  @media (max-width: 768px) {
+    height: 25px;
+  }
 `;
 
 export default function LogoButton({ nav }) {

@@ -18,6 +18,7 @@ const NavContainer = styled.div`
   width: 100%;
   height: 80px;
   background: #fefefedb;
+  backdrop-filter: blur(3px);
   border-bottom: 0.5px solid #ccc;
 
   @media (max-width: 768px) {
@@ -28,11 +29,6 @@ const NavContainer = styled.div`
 const NavLeft = styled.div`
   display: flex;
   align-items: center;
-
-  /* @media (max-width: 1024px) {
-    align-items: flex-start;
-    flex-direction: column;
-  } */
 `;
 const NavRight = styled.div`
   display: flex;
@@ -51,7 +47,8 @@ const MobileNavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fefefe;
+  background: #fefefedb;
+  backdrop-filter: blur(3px);
   border-bottom: 0.5px solid #ccc;
 
   > a {
@@ -69,8 +66,12 @@ const MobileMenu = styled.div`
   padding: 20px;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #fefefeed;
+  backdrop-filter: blur(3px);
 
   @media (min-width: 769px) {
     display: none;
@@ -83,15 +84,6 @@ export default function NavBar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  //모바일 메뉴 열려있으면 스크롤 제한
-  if (isMenuOpen) {
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-    document.documentElement.style.overflow = "";
-  }
 
   return (
     <>

@@ -9,6 +9,10 @@ const FooterWrap = styled.div`
   display: flex;
   align-items: center;
   background: #333;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 const FooterIn = styled.div`
@@ -16,11 +20,22 @@ const FooterIn = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
 `;
 
 const Copyright = styled.span`
   color: #999999;
   letter-spacing: -0.04rem;
+
+  @media (max-width: 768px) {
+    padding-top: 0.5rem;
+    font-size: 0.75rem;
+  }
 `;
 
 export default function Footer() {

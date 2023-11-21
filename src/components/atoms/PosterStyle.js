@@ -10,7 +10,7 @@ export const PosterExhibition = styled.div`
   width: 326px;
   height: 459px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     width: 100px;
     height: ${100 * aspectRatio}px;
   }

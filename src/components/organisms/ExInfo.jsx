@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import MOCK_DATA from "../../MOCK_DATA.json";
 import { styled } from "styled-components";
 
@@ -30,7 +29,7 @@ const ExInfoHeader = styled.div`
   }
 
   > .title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
   }
 `;
@@ -62,8 +61,8 @@ const SectionPoster = styled.div`
 `;
 const SectionOverview = styled.div`
   flex: 1;
-  padding-left: 3rem;
-  font-size: 0.875rem;
+  padding-left: 5rem;
+  font-size: 1rem;
 
   > dl {
     padding: 0 0.75rem;
@@ -73,11 +72,10 @@ const SectionOverview = styled.div`
     height: calc(100% / 9);
 
     > dt {
-      width: 25%;
+      width: 100px;
       font-weight: 600;
     }
     > dd {
-      width: 80%;
       font-weight: 400;
     }
   }
@@ -86,8 +84,9 @@ const SectionOverview = styled.div`
     width: 100%;
     padding-left: 0;
     padding-top: 0.5rem;
-    border-top: 1.5px solid #555;
+    border-top: 1px solid #ccc;
     margin-top: 1rem;
+    font-size: 0.875rem;
 
     > dl {
       padding: 0.4rem 0.75rem;
@@ -99,17 +98,7 @@ const SectionOverview = styled.div`
   }
 `;
 
-export default function ExInfo() {
-  const { id } = useParams();
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const foundData = MOCK_DATA.list.find((item) => item.id === parseInt(id));
-    setData(foundData);
-  }, [id]);
-
-  if (!data) return null;
-
+export default function ExInfo({ data }) {
   return (
     <>
       <ExInfoWrap>

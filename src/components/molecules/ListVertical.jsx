@@ -14,7 +14,7 @@ const ListVerticalWrap = styled.li`
   width: fit-content;
   margin-bottom: 1.25rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     margin-bottom: 0;
     width: 100%;
     height: 160px;
@@ -27,7 +27,7 @@ const ListVerticalWrap = styled.li`
 const ListInfo = styled.div`
   margin-top: 0.75rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     height: 130px;
     padding-left: 1.25rem;
     display: flex;
@@ -45,7 +45,7 @@ const BadgeWrap = styled.div`
     margin-right: 0.3rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     margin-top: 0;
   }
 `;
