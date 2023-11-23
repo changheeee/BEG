@@ -9,6 +9,7 @@ import Community from "./components/template/Community";
 import Main from "./components/template/Main";
 import ExDetail from "./components/template/ExDetail";
 import Write from "./components/template/Write";
+import ReviewDetail from "./components/template/ReviewDetail";
 
 const Wrapper = styled.div`
   padding-top: 80px;
@@ -38,8 +39,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/exhibition" element={<Exhibition />} />
-            <Route path="/community" element={<Community />} />
             <Route path="/ex_detail/:id" element={<ExDetail />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/review_detail/:id" element={<ReviewDetail />} />
             <Route path="/write" element={<Write />} />
           </Routes>
         </ContentWrapper>

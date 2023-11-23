@@ -16,6 +16,7 @@ const PostButton = styled.a`
   &:active {
     background-color: #ccc;
     border: none;
+    color: #fefefe;
   }
 `;
 

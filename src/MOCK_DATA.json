@@ -142,7 +142,8 @@
       "views": 22,
       "likes": 5,
       "src": "/images/poster1.png",
-      "posted_at": "2023-11-18"
+      "posted_at": "2023-11-18",
+      "recommended": true
     },
     {
       "id": 1,
@@ -153,7 +154,8 @@
       "content": "너무 감명깊어요",
       "views": 22,
       "likes": 7,
-      "posted_at": "2023-11-19"
+      "posted_at": "2023-11-19",
+      "recommended": false
     },
     {
       "id": 2,
@@ -164,7 +166,8 @@
       "content": "정말 재밌었어요",
       "views": 22,
       "likes": 13,
-      "posted_at": "2023-11-20"
+      "posted_at": "2023-11-20",
+      "recommended": false
     },
     {
       "id": 3,
@@ -175,7 +178,8 @@
       "content": "감동적이에요",
       "views": 22,
       "likes": 10,
-      "posted_at": "2023-11-21"
+      "posted_at": "2023-11-21",
+      "recommended": false
     },
     {
       "id": 4,
@@ -186,7 +190,8 @@
       "content": "감동적이에요",
       "views": 22,
       "likes": 18,
-      "posted_at": "2023-11-22"
+      "posted_at": "2023-11-22",
+      "recommended": true
     }
   ]
 }
