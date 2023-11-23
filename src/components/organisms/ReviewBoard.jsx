@@ -24,6 +24,11 @@ const BoardContent = styled.ul`
     display: flex;
     height: 150px;
 
+    span {
+      // 전시공연이름, 게시글 정보 폰트사이즈
+      font-size: 0.75rem;
+    }
+
     .poster {
       border: 1px solid #eee;
       height: 100%;
@@ -37,7 +42,7 @@ const BoardContent = styled.ul`
       display: flex;
       justify-content: space-between;
       padding: 0.75rem;
-      border: 1px solid red;
+      // border: 1px solid red;
 
       .inner-content {
         display: flex;
@@ -46,6 +51,11 @@ const BoardContent = styled.ul`
         .category-info {
           display: flex;
           align-items: center;
+          gap: 0.4rem;
+        }
+        .post_title {
+        }
+        .post_content {
         }
       }
 
@@ -58,8 +68,7 @@ const BoardContent = styled.ul`
 `;
 
 export default function ReviewBoard() {
-  const POSTS = data.posts.reverse();
-  const EXLIST = data.list;
+  const POSTS = data.posts;
 
   return (
     <>
@@ -69,7 +78,7 @@ export default function ReviewBoard() {
         <WriteButton />
       </BoardHeader>
       <BoardContent>
-        {POSTS.map((item, index) => (
+        {POSTS.reverse().map((item, index) => (
           <li key={index}>
             <a className="poster" href={`/review_detail/${item.id}`}>
               <img
@@ -81,12 +90,12 @@ export default function ReviewBoard() {
               <div className="inner-content">
                 <div className="category-info">
                   <CategoryBadge item={item} />
-                  <span>{item.ex_title}</span>
+                  <span>[{item.ex_title}]</span>
                 </div>
                 <a className="post_title" href={`/review_detail/${item.id}`}>
                   {item.title}
                 </a>
-                <p>{item.content}</p>
+                <p className="post_content">{item.content}</p>
               </div>
               <div className="post-info">
                 <span className="author">{item.author}</span>
