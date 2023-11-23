@@ -26,13 +26,15 @@ const BoardListWrap = styled.li`
       width: 50%;
       display: flex;
       flex-direction: column;
-
+      //카테고리뱃지, 공연전시제목
       .category-info {
         display: flex;
         align-items: center;
         gap: 0.3rem;
         font-size: 0.875rem;
-
+        span {
+          font-size: 0.675rem;
+        }
         //공연전시제목
         > strong {
           color: #999;
@@ -92,33 +94,50 @@ const BoardListWrap = styled.li`
     }
   }
 
-  @media (max-width: 768px) {
-    /* overflow: hidden; */
-
+  @media (max-width: 1024px) {
     .content-wrapper {
       flex-direction: column;
       .inner-content {
         width: 100%;
-        .post_title {
-          font-size: 1rem;
+        //카테고리 뱃지
+        span {
+          font-size: 0.65rem;
         }
+        //전시공연 제목
+        .category-info {
+          font-size: 0.75rem;
+        }
+        //관람후기 제목
+        .post_title {
+          font-size: 0.875rem;
+        }
+        //관람후기 본문 미리보기
         .post_content {
-          width: 90%;
+          width: 100%;
+          font-size: 0.75rem;
         }
       }
+      //게시글 정보 (작성자,작성일,조회수,좋아요수)
       .post-info {
-        justify-content: flex-end;
         width: 100%;
-        gap: 0.5rem;
+        gap: 0;
+        flex-wrap: wrap;
 
         > li {
+          margin-right: 0.5rem;
+          > img {
+            height: 0.75rem;
+          }
           .gray {
             font-size: 0.65rem;
             color: #999;
           }
         }
-        > li:first-child {
-          justify-self: flex-start;
+        //작성자
+        .author {
+          width: 100%;
+          padding-top: 0.5rem;
+          /* display: none; */
         }
       }
     }
@@ -151,7 +170,7 @@ function BoardList({ item }) {
         </div>
         {/* 작성자, 작성일, 조회수, 추천수 */}
         <ul className="post-info">
-          <li>
+          <li className="author">
             <span className="gray">{item.author}</span>
           </li>
           <li>

@@ -14,6 +14,10 @@ const SearchInputWrap = styled.div`
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 0 0.3em;
+
+  @media (max-width: 768px) {
+    width: 150px;
+  }
 `;
 
 export default function BoardSearchInput() {

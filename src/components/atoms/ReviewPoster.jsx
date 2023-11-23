@@ -15,7 +15,7 @@ export default function ReviewPoster({ item }) {
 
   return (
     <div>
-      <ReviewPosterWrap href="{detail/_id URL}">
+      <ReviewPosterWrap href={`review_detail/${item.id}`}>
         {imageSrc && <img src={imageSrc} alt={imageSrc} />}
         {!imageSrc && (
           // 이미지가 없을 경우 플레이스홀더를 렌더링하거나 상황에 맞게 처리

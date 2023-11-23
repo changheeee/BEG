@@ -79,7 +79,7 @@ const BestHeader = styled.div`
   gap: 0.5rem;
 
   //제목
-  > h4 {
+  > .title {
     text-align: left;
     font-weight: 600;
     font-size: 1.125rem;
@@ -116,7 +116,7 @@ const BestTop = styled.div`
   gap: 0.3rem;
 
   //전시제목
-  > span {
+  > strong {
     font-weight: 500;
     font-size: 0.875rem;
     color: #a6a6a6;
@@ -205,9 +205,11 @@ export default function ListBest() {
                 <BestHeader>
                   <BestTop>
                     <CategoryBadge item={item} />
-                    <span>[{item.ex_title}]</span>
+                    <strong>[{item.ex_title}]</strong>
                   </BestTop>
-                  <h4>{item.title}</h4>
+                  <a className="title" href={`/review_detail/${item.id}`}>
+                    {item.title}
+                  </a>
                   <p>{item.content}</p>
                 </BestHeader>
                 <BestFooter>
@@ -237,9 +239,11 @@ export default function ListBest() {
               <BestHeader>
                 <BestTop>
                   <CategoryBadge item={item} />
-                  <span>[{item.ex_title}]</span>
+                  <strong>[{item.ex_title}]</strong>
                 </BestTop>
-                <h4>{item.title}</h4>
+                <a className="title" href={`/review_detail/${item.id}`}>
+                  {item.title}
+                </a>
                 <p>{item.content}</p>
               </BestHeader>
               <BestFooter>
