@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import PostButton from "../atoms/PostButton";
+import PostButton from "./PostButton";
 
 const StyledButton = styled(PostButton)`
   background-color: #555;
@@ -9,5 +9,5 @@ const StyledButton = styled(PostButton)`
 `;
 
 export default function WriteButton() {
-  return <StyledButton>글쓰기</StyledButton>;
+  return <StyledButton href="/write">글쓰기</StyledButton>;
 }

@@ -8,6 +8,7 @@ import ReviewPoster from "../atoms/ReviewPoster";
 import CategoryBadge from "../atoms/CategoryBadge";
 
 const ListBestWrap = styled.ul`
+  margin-bottom: 100px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -19,6 +20,7 @@ const ListBestWrap = styled.ul`
   }
 
   @media (max-width: 768px) {
+    margin-bottom: 50px;
     border: 1px solid #ccc;
     border-radius: 25px;
     overflow: hidden;

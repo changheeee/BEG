@@ -6,6 +6,7 @@ import { DetailContent } from "../atoms/SectionContent";
 import ExInfo from "../organisms/ExInfo";
 import ExReservationInfo from "../organisms/ExReservationInfo";
 import MOCK_DATA from "../../MOCK_DATA.json";
+import MoreInfoTabMenu from "../organisms/MoreInfoTabMenu";
 
 export default function ExDetail() {
   const { id } = useParams();
@@ -24,6 +25,7 @@ export default function ExDetail() {
       <DetailContent>
         <ExInfo data={data} />
         <ExReservationInfo data={data} />
+        <MoreInfoTabMenu data={data} />
       </DetailContent>
     </>
   );

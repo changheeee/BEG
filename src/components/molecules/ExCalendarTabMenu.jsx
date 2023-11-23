@@ -62,6 +62,8 @@ const formatDate = (dateString) => {
 };
 
 export default function ExCalendarTabMenu({ data, selectedDate }) {
+  console.log(selectedDate);
+
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [sortType, setSortType] = useState("date");
 
@@ -80,8 +82,10 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
   const filteredData = sortedData.filter(
     (item) =>
       (selectedCategory === "전체" || item.category === selectedCategory) &&
-      formatDate(item.start) <= selectedDate &&
-      formatDate(item.end) >= selectedDate,
+      ((formatDate(item.start) <= selectedDate &&
+        formatDate(item.end) >= selectedDate) || // 이벤트가 선택된 날짜를 기간으로 포함하는 경우
+        formatDate(item.start).toDateString() === selectedDate.toDateString() || // 이벤트가 선택된 날짜에 시작하는 경우
+        formatDate(item.end).toDateString() === selectedDate.toDateString()) // 이벤트가 선택된 날짜에 종료하는 경우
   );
 
   return (

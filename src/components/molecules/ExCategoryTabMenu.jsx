@@ -15,9 +15,8 @@ const CategoryTab = styled.ul`
   padding: 1rem 0;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-
   overflow-x: scroll;
-  scrollbar-height: 0;
+  scrollbar-width: 0;
   scrollbar-color: transparent transparent;
   -ms-overflow-style: none;
 
@@ -87,6 +86,7 @@ export default function ExCategoryTabMenu({ data }) {
   // 현재 날짜를 가져옵니다.
   const currentDate = new Date();
 
+  //북마크수가 높은 순으로 정렬 아니면 최신순
   if (sortType === "bookmarked") {
     sortedData.sort((a, b) => b.bookmarked - a.bookmarked);
   } else {
@@ -120,7 +120,7 @@ export default function ExCategoryTabMenu({ data }) {
               (selectedCategory === "전체" ||
                 item.category === selectedCategory) &&
               formatDate(item.start) <= currentDate &&
-              formatDate(item.end) >= currentDate,
+              formatDate(item.end) >= currentDate
           )
           .map((item, index) => (
             <ListVertical key={index} item={item} />
