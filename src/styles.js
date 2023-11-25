@@ -50,14 +50,17 @@ export const GlobalStyles = createGlobalStyle`
 		box-sizing: border-box;
 	}
 
-  a{
-    text-decoration: none;
-    color: #000;
-  }
+	a{
+		text-decoration: none;
+		color: #000;
+	}
 	
 	button{
 		border: none;
 		background:none;
+	}
+	strong{
+		font-weight: bold;
 	}
 	
 `;
