@@ -1,61 +1,71 @@
 import React from "react";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Slider from "react-slick";
 import { styled } from "styled-components";
+import MainBestList from "../molecules/MainBestList";
 
-const MainCarouselWrap = styled.div`
-  /* height: 400px; */
-  position: relative;
+const MainExBestWrap = styled.div`
+  width: 100%;
 
-  .item {
+  .slick-list {
+    padding-bottom: 5px;
+  }
+  .slick-slide > div {
+    transition: all 2.25s;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 400px;
-    background-color: #eee;
+    opacity: 0.5; /* 모든 슬라이드 항목에 투명도 50% 설정 */
+    pointer-events: none; /* 모든 슬라이드 항목의 클릭 비활성화 */
+  }
+  .slick-current + .slick-slide > div {
+    opacity: 1; /* 현재 슬라이드의 다음 항목에 투명도 100% 설정 */
+    pointer-events: auto; /* 현재 슬라이드의 다음 항목의 클릭 활성화 */
   }
 
-  /* 추가된 스타일 */
-  .carousel .dot {
-    width: 10px;
-    height: 10px;
-    background-color: #555;
-    box-shadow: none;
-  }
-  .carousel .selected {
-    background-color: #fefefe;
+  @media (max-width: 1240px) {
+    .slick-slide > div {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 `;
 
-export default function MainExBest() {
+export default function MainExBest({ data }) {
+  const ExList = data.list;
+
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true, // 추가 옵션: 자동으로 슬라이드가 넘어감
+    autoplaySpeed: 5000, // 추가 옵션: 슬라이드 간의 자동 재생 속도 (단위: 밀리초)
+    pauseOnHover: true, // 마우스를 올렸을 때 오토플레이 멈춤
+    responsive: [
+      {
+        breakpoint: 1240, // 태블릿 화면에서 적용될 설정
+        settings: {
+          slidesToShow: 2, // 태블릿 화면에서 2개씩 슬라이드 보이기
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // 모바일 화면에서 적용될 설정
+        settings: {
+          slidesToShow: 1, // 모바일 화면에서 1개씩 슬라이드 보이기
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <MainCarouselWrap>
-      <Carousel
-        showThumbs={false} // 썸네일(썸네일은 아래에 작은 이미지로 슬라이드 표시)
-        autoPlay={false} // 자동 슬라이드
-        infiniteLoop={true} // 끝 페이지에서 첫 페이지로 반복
-        interval={5000} // 각 슬라이드 간의 시간 간격 (밀리초)
-        showStatus={false} // 현재 위치 상태를 보여줄 것인지 여부
-        showArrows={true} // 좌우 화살표 표시 여부
-        //showIndicators={false} // 슬라이드 위치를 나타내는 인디케이터 표시 여부
-        emulateTouch={true} // 터치 이벤트 모방 (모바일 디바이스에서 스와이프 기능 활성화)
-        dynamicHeight={true} // 슬라이드의 동적 높이 사용 여부
-        useKeyboardArrows={false} // 키보드 화살표 사용 여부
-        stopOnHover={true} // 마우스 호버 시 자동 슬라이드 일시 중지
-      >
-        <div className="item">
-          <img src="/images/bg_main_1.png" alt="" />
-        </div>
-        <div className="item">
-          <img src="/images/bg_main_1.png" alt="" />
-        </div>
-        <div className="item">
-          <img src="/images/bg_main_1.png" alt="" />
-        </div>
-        <div className="item">
-          <img src="/images/bg_main_1.png" alt="" />
-        </div>
-      </Carousel>
-    </MainCarouselWrap>
+    <MainExBestWrap>
+      <Slider {...settings}>
+        {ExList.map((item, index) => (
+          <MainBestList key={index} item={item} />
+        ))}
+      </Slider>
+    </MainExBestWrap>
   );
 }

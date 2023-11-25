@@ -5,6 +5,7 @@ import SectionHeader from "../molecules/SectionHeader";
 import ListBest from "../molecules/ListBest";
 import { ContentTitle } from "../atoms/ContentTitle";
 import ReviewBoard from "../organisms/ReviewBoard";
+import ListVertical from "../molecules/ListVertical";
 
 export default function Community() {
   return (

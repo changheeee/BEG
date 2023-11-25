@@ -3,17 +3,18 @@ import React from "react";
 import { MainContent } from "../atoms/SectionContent";
 import MainCarousel from "../organisms/MainCarousel";
 import MainExBest from "../organisms/MainExBest";
-import { ContentTitle } from "../atoms/ContentTitle";
+import { MainContentTitle } from "../atoms/ContentTitle";
+import data from "../../MOCK_DATA.json";
 
 export default function Main() {
   return (
     <>
       <MainContent>
         <MainCarousel />
-        {/* <ContentTitle>
-          <h3>BEST REVIEW</h3>
-        </ContentTitle>
-        <MainExBest /> */}
+        <MainContentTitle>
+          <h3 style={{ marginTop: "80px" }}>전시 랭킹</h3>
+        </MainContentTitle>
+        <MainExBest data={data} />
       </MainContent>
     </>
   );

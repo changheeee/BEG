@@ -72,6 +72,7 @@ const Right = styled.div`
     padding: 15px;
   }
 `;
+
 const BestHeader = styled.div`
   display: flex;
   flex-direction: column;

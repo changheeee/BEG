@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const ReviewPosterWrap = styled.a`
   display: block;
+  height: 100%;
 
   img {
     width: 100%;

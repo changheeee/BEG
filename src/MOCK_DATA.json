@@ -118,7 +118,7 @@
       "end": "2023.12.08",
       "category": "콘서트",
       "src": "/images/poster1.png",
-      "bookmarked": 0
+      "bookmarked": 10
     },
     {
       "id": 12,
@@ -128,7 +128,7 @@
       "end": "2024.01.23",
       "category": "콘서트",
       "src": "",
-      "bookmarked": 0
+      "bookmarked": 100
     }
   ],
   "posts": [
