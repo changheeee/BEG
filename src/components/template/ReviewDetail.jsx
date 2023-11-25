@@ -59,12 +59,18 @@ const DetailSection = styled.div`
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;
 
-  > p {
+  > .content {
     //본문영역(나중에 html형식을 파싱하면, 개별 태그 지정 필요할듯)
     //이미지는 width: 100%; 나머지 태그 별도 조정
     width: 100%;
     margin-bottom: 15vh;
     line-height: 1.3;
+    h1 {
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+    }
   }
 `;
 const DetailFooter = styled.div`
@@ -130,14 +136,17 @@ export default function ReviewDetail() {
           </div>
         </DetailHeader>
         <DetailSection>
-          <p>{data.content}</p>
+          <div
+            className="content"
+            dangerouslySetInnerHTML={{ __html: data.content }}
+          />
           <RecommendedButton
             recommended={isRecommended}
             // onClick={toggleRecommend}
           />
         </DetailSection>
         <DetailFooter>
-          <ListButton>목록</ListButton>
+          <ListButton href="/community">목록</ListButton>
           <EditButton>수정</EditButton>
         </DetailFooter>
       </SectionContent>

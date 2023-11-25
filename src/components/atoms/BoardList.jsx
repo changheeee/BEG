@@ -166,7 +166,10 @@ function BoardList({ item }) {
           <a className="post_title" href={`/review_detail/${item.id}`}>
             {item.title}
           </a>
-          <p className="post_content">{item.content}</p>
+          <div
+            className="post_content"
+            dangerouslySetInnerHTML={{ __html: item.content }}
+          />
         </div>
         {/* 작성자, 작성일, 조회수, 추천수 */}
         <ul className="post-info">

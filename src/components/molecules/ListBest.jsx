@@ -85,7 +85,7 @@ const BestHeader = styled.div`
     font-size: 1.125rem;
   }
   //본문 미리보기
-  > p {
+  > .post_content {
     text-align: left;
     font-size: 0.875rem;
     line-height: 1.15;
@@ -103,7 +103,7 @@ const BestHeader = styled.div`
       font-size: 1rem;
     }
 
-    > p {
+    > .post_content {
       display: none;
     }
   }
@@ -210,7 +210,10 @@ export default function ListBest() {
                   <a className="title" href={`/review_detail/${item.id}`}>
                     {item.title}
                   </a>
-                  <p>{item.content}</p>
+                  <div
+                    className="post_content"
+                    dangerouslySetInnerHTML={{ __html: item.content }}
+                  />
                 </BestHeader>
                 <BestFooter>
                   <span>{item.author}</span>
@@ -244,7 +247,10 @@ export default function ListBest() {
                 <a className="title" href={`/review_detail/${item.id}`}>
                   {item.title}
                 </a>
-                <p>{item.content}</p>
+                <div
+                  className="post_content"
+                  dangerouslySetInnerHTML={{ __html: item.content }}
+                />
               </BestHeader>
               <BestFooter>
                 <span>{item.author}</span>
