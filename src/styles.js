@@ -38,17 +38,19 @@ import reset from "styled-reset";
 // };
 
 export const GlobalStyles = createGlobalStyle`
+
 	${reset}
-
-
-	input {
-		all:unset;
-	}
+	
 	* {
 		margin:0;
 		padding:0;
 		box-sizing: border-box;
 	}
+
+	input {
+		all:unset;
+	}
+	
 
 	a{
 		text-decoration: none;

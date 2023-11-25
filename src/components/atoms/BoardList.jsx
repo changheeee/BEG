@@ -63,6 +63,16 @@ const BoardListWrap = styled.li`
         display: -webkit-box;
         -webkit-line-clamp: 2; // 표시할 줄 수
         -webkit-box-orient: vertical;
+
+        br {
+          display: none;
+        }
+        img {
+          display: none;
+        }
+        strong {
+          font-weight: normal;
+        }
       }
     }
 

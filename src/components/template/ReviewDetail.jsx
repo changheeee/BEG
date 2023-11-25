@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { styled } from "styled-components";
 import SectionHeader from "../molecules/SectionHeader";
-import { SectionContent } from "../atoms/SectionContent";
+import { SectionContent, DetailContent } from "../atoms/SectionContent";
 import MOCK_DATA from "../../MOCK_DATA.json";
 import RecommendedButton from "../atoms/RecommendButton";
 import PostButton from "../atoms/PostButton";
@@ -111,7 +111,7 @@ export default function ReviewDetail() {
   return (
     <>
       <SectionHeader community />
-      <SectionContent>
+      <DetailContent>
         <DetailHeader>
           <strong>{data.ex_title}</strong>
           <h4>{data.title}</h4>
@@ -149,7 +149,7 @@ export default function ReviewDetail() {
           <ListButton href="/community">목록</ListButton>
           <EditButton>수정</EditButton>
         </DetailFooter>
-      </SectionContent>
+      </DetailContent>
     </>
   );
 }

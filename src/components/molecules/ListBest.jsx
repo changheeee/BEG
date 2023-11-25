@@ -95,6 +95,16 @@ const BestHeader = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 3; // 표시할 줄 수
     -webkit-box-orient: vertical;
+
+    br {
+      display: none;
+    }
+    img {
+      display: none;
+    }
+    strong {
+      font-weight: normal;
+    }
   }
 
   @media (max-width: 768px) {

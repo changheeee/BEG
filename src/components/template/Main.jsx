@@ -1,11 +1,20 @@
 import React from "react";
 
-import { SectionContent } from "../atoms/SectionContent";
+import { MainContent } from "../atoms/SectionContent";
+import MainCarousel from "../organisms/MainCarousel";
+import MainExBest from "../organisms/MainExBest";
+import { ContentTitle } from "../atoms/ContentTitle";
 
 export default function Main() {
   return (
     <>
-      <SectionContent>메인화면입니다.</SectionContent>
+      <MainContent>
+        <MainCarousel />
+        {/* <ContentTitle>
+          <h3>BEST REVIEW</h3>
+        </ContentTitle>
+        <MainExBest /> */}
+      </MainContent>
     </>
   );
 }
