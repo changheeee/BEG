@@ -14,6 +14,12 @@ const ListVerticalWrap = styled.a`
   flex-direction: column;
   width: fit-content;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+
   .ranking_badge {
     position: absolute;
     /* left: -5px; */
@@ -34,6 +40,7 @@ const ListVerticalWrap = styled.a`
 `;
 
 const ListInfo = styled.div`
+  /* width: 100%; */
   text-align: left;
   margin-top: 0.75rem;
 `;

@@ -9,20 +9,17 @@ import MoreButton from "../atoms/MoreButton";
 
 export default function Main() {
   return (
-    <>
-      <MainContent>
-        <MainCarousel />
-        <MainContentTitle>
-          <h3 style={{ marginTop: "80px" }}>전시 랭킹</h3>
-        </MainContentTitle>
-        <MainExBest data={data} />
-        <MainContentTitle>
-          <h3 style={{ marginTop: "100px" }}>전시 캘린더</h3>
-          <MoreButton />
-        </MainContentTitle>
-
-        <MainDatePick data={data} />
-      </MainContent>
-    </>
+    <MainContent>
+      <MainCarousel />
+      <MainContentTitle>
+        <h3 style={{ marginTop: "80px" }}>전시 랭킹</h3>
+      </MainContentTitle>
+      <MainExBest data={data} />
+      <MainContentTitle>
+        <h3 style={{ marginTop: "100px" }}>전시 캘린더</h3>
+        <MoreButton />
+      </MainContentTitle>
+      <MainDatePick data={data} />
+    </MainContent>
   );
 }

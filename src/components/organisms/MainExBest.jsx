@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
 import { styled } from "styled-components";
 import MainBestList from "../molecules/MainBestList";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+const Arrow = styled.div`
+  display: flex;
+  position: absolute;
+  color: #aaa;
+  top: 37%;
+  z-index: 10; // arrow가 다른 요소 위에 올려지도록 z-index 추가
+  ${(props) => (props.direction === "right" ? `right: -40px;` : `left: -40px;`)}
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  transition: transform ease-in 0.1s;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 
 const MainExBestWrap = styled.div`
-  width: 100%;
-
-  .slick-list {
-  }
+  position: relative;
 
   .slick-current {
     padding-bottom: 15px;
@@ -17,27 +37,46 @@ const MainExBestWrap = styled.div`
     display: flex;
     justify-content: center;
   }
-
-  /* .slick-current + .slick-slide + .slick-slide > div {
-  } */
 `;
 
+const SliderArrow = ({ direction, onClick }) => (
+  <Arrow onClick={onClick} direction={direction}>
+    {direction === "left" ? (
+      <IoIosArrowBack size={30} />
+    ) : (
+      <IoIosArrowForward size={30} />
+    )}
+  </Arrow>
+);
+
 export default function MainExBest({ data }) {
-  // 북마크 숫자를 기준으로 데이터를 내림차순 정렬하고, 상위 10개만 선택합니다.
   const ExList = data.list
     .sort((a, b) => b.bookmarked - a.bookmarked)
     .slice(0, 10);
 
-  var settings = {
+  const sliderRef = useRef(null);
+
+  const settings = {
     dots: true,
     infinite: true,
     speed: 1000,
     slidesToShow: 5,
     slidesToScroll: 5,
-    autoplay: false, // 추가 옵션: 자동으로 슬라이드가 넘어감
-    autoplaySpeed: 5000, // 추가 옵션: 슬라이드 간의 자동 재생 속도 (단위: 밀리초)
-    pauseOnHover: true, // 마우스를 올렸을 때 오토플레이 멈춤
-    // centerMode: true,
+    autoplay: false,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+    prevArrow: (
+      <SliderArrow
+        direction="left"
+        onClick={() => sliderRef.current.slickPrev()}
+      />
+    ),
+    nextArrow: (
+      <SliderArrow
+        direction="right"
+        onClick={() => sliderRef.current.slickNext()}
+      />
+    ),
     responsive: [
       {
         breakpoint: 1840,
@@ -46,7 +85,6 @@ export default function MainExBest({ data }) {
           slidesToScroll: 4,
         },
       },
-
       {
         breakpoint: 1500,
         settings: {
@@ -55,16 +93,16 @@ export default function MainExBest({ data }) {
         },
       },
       {
-        breakpoint: 1240, // 태블릿 화면에서 적용될 설정
+        breakpoint: 1240,
         settings: {
-          slidesToShow: 2, // 태블릿 화면에서 2개씩 슬라이드 보이기
+          slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 768, // 모바일 화면에서 적용될 설정
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1, // 모바일 화면에서 1개씩 슬라이드 보이기
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -73,11 +111,9 @@ export default function MainExBest({ data }) {
 
   return (
     <MainExBestWrap>
-      <Slider {...settings}>
+      <Slider ref={sliderRef} {...settings}>
         {ExList.map((item, index) => (
-          <>
-            <MainBestList key={index} item={item} ranking={index + 1} />
-          </>
+          <MainBestList key={index} item={item} ranking={index + 1} />
         ))}
       </Slider>
     </MainExBestWrap>

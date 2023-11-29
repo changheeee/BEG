@@ -9,6 +9,10 @@ export const PosterMain = styled.div`
 export const PosterMainBest = styled.div`
   width: 326px;
   height: ${326 * aspectRatio}px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const PosterExhibition = styled.div`
@@ -24,9 +28,24 @@ export const PosterExhibition = styled.div`
 export const PosterCommunityBest = styled.div`
   width: 100px;
   height: ${100 * aspectRatio}px;
+
   @media (max-width: 768px) {
     height: 100%;
   }
+`;
+
+export const PosterMainCalendar = styled.div`
+  width: 100px;
+  height: ${100 * aspectRatio}px;
+
+  @media (max-width: 1200px) {
+    /* width: 120px;
+    height: auto; */
+  }
+  /* @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  } */
 `;
 
 export const PosterLocation = styled.div``;

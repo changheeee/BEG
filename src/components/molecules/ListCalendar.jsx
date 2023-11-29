@@ -6,21 +6,29 @@ import ExListLocation from "../atoms/ExListLocation";
 import ExListPeriod from "../atoms/ExListPeriod";
 import CategoryBadge from "../atoms/CategoryBadge";
 import DdayBadge from "../atoms/DdayBadge";
-import { PosterCommunityBest } from "../atoms/PosterStyle.js";
+import { PosterMainCalendar } from "../atoms/PosterStyle.js";
 
 const ListWrap = styled.li`
-  width: 50%;
   display: flex;
-  /* flex-direction: column; */
+  width: 33.3%;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     margin-bottom: 0;
     width: 100%;
-    height: 160px;
+    height: auto;
     flex-direction: row;
     align-items: center;
     border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
   }
+
+  /* @media (max-width: 768px) {
+    min-width: 100%;
+    flex-direction: column;
+    height: 100%;
+    border: none;
+    gap: 1rem;
+  } */
 `;
 
 const ListInfo = styled.div`
@@ -35,6 +43,11 @@ const ListInfo = styled.div`
     gap: 1rem;
     margin-top: 0;
   }
+
+  /* @media (max-width: 768px) {
+    min-width: 100%;
+    height: auto;
+  } */
 `;
 
 const BadgeWrap = styled.div`
@@ -53,9 +66,9 @@ const BadgeWrap = styled.div`
 export default function ListCalendar({ item }) {
   return (
     <ListWrap>
-      <PosterCommunityBest>
+      <PosterMainCalendar>
         <ExListPoster item={item} />
-      </PosterCommunityBest>
+      </PosterMainCalendar>
       <ListInfo>
         <BadgeWrap>
           <CategoryBadge item={item} />
