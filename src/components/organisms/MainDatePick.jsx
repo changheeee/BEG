@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil"; // Recoil 훅 추가
+
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { styled } from "styled-components";
@@ -7,6 +9,7 @@ import "../../assets/MainCalendar.css";
 import ListCalendar from "../molecules/ListCalendar";
 import DatePicker from "react-horizontal-datepicker";
 import MoreButton from "../atoms/MoreButton";
+import { fetchListState } from "../../stores/recoilState"; // fetchListState import
 
 const MainDatePickWrap = styled.div`
   display: flex;
@@ -59,7 +62,9 @@ const ListContainer = styled.ul`
   }
 `;
 
-export default function MainDatePick({ data }) {
+export default function MainDatePick() {
+  const data = useRecoilValue(fetchListState); // Recoil에서 데이터 가져오기
+
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const formatDate = (dateString) => {
@@ -67,7 +72,7 @@ export default function MainDatePick({ data }) {
     return new Date(`${year}-${month}-${day}`);
   };
 
-  const sortedData = [...data.list].slice(0, 7);
+  const sortedData = [...data].slice(0, 6);
 
   const filteredData = sortedData.filter(
     (item) =>

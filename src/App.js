@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { RecoilRoot } from "recoil";
 import { GlobalStyles } from "./styles";
+
 import NavBar from "./components/organisms/NavBar";
 import Footer from "./components/organisms/Footer";
 import Exhibition from "./components/template/Exhibition";
@@ -31,22 +32,24 @@ const ContentWrapper = styled.div`
 
 export default function App() {
   return (
-    <Router>
-      <Wrapper>
-        <GlobalStyles />
-        <NavBar />
-        <ContentWrapper>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/exhibition" element={<Exhibition />} />
-            <Route path="/ex_detail/:id" element={<ExDetail />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/review_detail/:id" element={<ReviewDetail />} />
-            <Route path="/write" element={<Write />} />
-          </Routes>
-        </ContentWrapper>
-        <Footer />
-      </Wrapper>
-    </Router>
+    <RecoilRoot>
+      <Router>
+        <Wrapper>
+          <GlobalStyles />
+          <NavBar />
+          <ContentWrapper>
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/exhibition" element={<Exhibition />} />
+              <Route path="/ex_detail/:id" element={<ExDetail />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/review_detail/:id" element={<ReviewDetail />} />
+              <Route path="/write" element={<Write />} />
+            </Routes>
+          </ContentWrapper>
+          <Footer />
+        </Wrapper>
+      </Router>
+    </RecoilRoot>
   );
 }

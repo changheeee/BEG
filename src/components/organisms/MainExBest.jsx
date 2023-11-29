@@ -1,8 +1,11 @@
 import React, { useRef } from "react";
+import { useRecoilValue } from "recoil"; // Recoil 훅 추가
+
 import Slider from "react-slick";
 import { styled } from "styled-components";
 import MainBestList from "../molecules/MainBestList";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { fetchListState } from "../../stores/recoilState"; // fetchListState import
 
 const Arrow = styled.div`
   display: flex;
@@ -49,8 +52,10 @@ const SliderArrow = ({ direction, onClick }) => (
   </Arrow>
 );
 
-export default function MainExBest({ data }) {
-  const ExList = data.list
+export default function MainExBest() {
+  const data = useRecoilValue(fetchListState); // Recoil에서 데이터 가져오기
+  console.log(data);
+  const ExList = [...data]
     .sort((a, b) => b.bookmarked - a.bookmarked)
     .slice(0, 10);
 
