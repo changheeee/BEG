@@ -7,46 +7,58 @@ const MainExBestWrap = styled.div`
   width: 100%;
 
   .slick-list {
-    padding-bottom: 5px;
-  }
-  .slick-slide > div {
-    transition: all 2.25s;
-    display: flex;
-    justify-content: center;
-    opacity: 0.5; /* 모든 슬라이드 항목에 투명도 50% 설정 */
-    pointer-events: none; /* 모든 슬라이드 항목의 클릭 비활성화 */
-  }
-  .slick-current + .slick-slide > div {
-    opacity: 1; /* 현재 슬라이드의 다음 항목에 투명도 100% 설정 */
-    pointer-events: auto; /* 현재 슬라이드의 다음 항목의 클릭 활성화 */
   }
 
-  @media (max-width: 1240px) {
-    .slick-slide > div {
-      opacity: 1;
-      pointer-events: auto;
-    }
+  .slick-current {
+    padding-bottom: 15px;
   }
+  .slick-slide > div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* .slick-current + .slick-slide + .slick-slide > div {
+  } */
 `;
 
 export default function MainExBest({ data }) {
-  const ExList = data.list;
+  // 북마크 숫자를 기준으로 데이터를 내림차순 정렬하고, 상위 10개만 선택합니다.
+  const ExList = data.list
+    .sort((a, b) => b.bookmarked - a.bookmarked)
+    .slice(0, 10);
 
   var settings = {
     dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true, // 추가 옵션: 자동으로 슬라이드가 넘어감
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    autoplay: false, // 추가 옵션: 자동으로 슬라이드가 넘어감
     autoplaySpeed: 5000, // 추가 옵션: 슬라이드 간의 자동 재생 속도 (단위: 밀리초)
     pauseOnHover: true, // 마우스를 올렸을 때 오토플레이 멈춤
+    // centerMode: true,
     responsive: [
+      {
+        breakpoint: 1840,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
       {
         breakpoint: 1240, // 태블릿 화면에서 적용될 설정
         settings: {
           slidesToShow: 2, // 태블릿 화면에서 2개씩 슬라이드 보이기
-          slidesToScroll: 1,
+          slidesToScroll: 2,
         },
       },
       {
@@ -63,7 +75,9 @@ export default function MainExBest({ data }) {
     <MainExBestWrap>
       <Slider {...settings}>
         {ExList.map((item, index) => (
-          <MainBestList key={index} item={item} />
+          <>
+            <MainBestList key={index} item={item} ranking={index + 1} />
+          </>
         ))}
       </Slider>
     </MainExBestWrap>

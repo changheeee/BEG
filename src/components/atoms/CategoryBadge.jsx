@@ -41,10 +41,10 @@ const CategoryBadgeWrap = styled.span`
 
 export default function CategoryBadge({ item }) {
   return (
-    <>
+    <div>
       <CategoryBadgeWrap category={item.category}>
         {item.category}
       </CategoryBadgeWrap>
-    </>
+    </div>
   );
 }

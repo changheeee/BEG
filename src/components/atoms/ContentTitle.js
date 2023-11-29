@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const MainContentTitle = styled.div`
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
 
   h3 {
     margin-bottom: 0.5rem;

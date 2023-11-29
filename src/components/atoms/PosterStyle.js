@@ -7,8 +7,8 @@ export const PosterMain = styled.div`
 `;
 
 export const PosterMainBest = styled.div`
-  width: 350px;
-  height: ${350 * aspectRatio}px;
+  width: 326px;
+  height: ${326 * aspectRatio}px;
 `;
 
 export const PosterExhibition = styled.div`

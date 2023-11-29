@@ -1,0 +1,114 @@
+.react-calendar {
+  width: 350px;
+  max-width: 100%;
+  background: #ffff;
+  border: none;
+  border-right: 1px solid #eeeeee;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.125em;
+  padding: 1rem;
+}
+.react-calendar__navigation {
+  justify-content: space-between;
+}
+/* 년도,월 라벨 */
+.react-calendar__navigation__label {
+  order: 1;
+  font-size: 1.25rem;
+  letter-spacing: -0.04rem;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+}
+.react-calendar__navigation__arrow {
+  order: 2;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.react-calendar__month-view__weekdays {
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: 5px;
+}
+/* 요일 */
+abbr {
+  text-decoration: none;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+}
+/* 일요일 */
+.react-calendar__month-view__weekdays__weekday:nth-child(1) {
+  color: red;
+}
+/* 토요일 */
+.react-calendar__month-view__weekdays__weekday:nth-child(7) {
+  color: blue;
+}
+
+.react-calendar__tile {
+  box-sizing: border-box;
+}
+
+.react-calendar__tile--now {
+  background: #ddd;
+  color: #555;
+  border-radius: 5px;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ccc;
+}
+
+.react-calendar__tile--active {
+  background: #fefefe !important;
+  color: #000;
+  font-weight: 600;
+  border: 2px solid #555 !important;
+  border-radius: 5px;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #fefefe;
+}
+
+.react-calendar__month-view__days__day {
+  color: black;
+}
+
+.react-calendar__month-view__days__day:enabled:hover,
+.react-calendar__month-view__days__day:enabled:focus {
+  background: #eee;
+}
+
+.react-calendar__month-view__days__day:nth-child(7n + 1) {
+  color: red; /* Set Sunday to red */
+}
+
+.react-calendar__month-view__days__day:nth-child(7n) {
+  color: blue; /* Set Saturday to blue */
+}
+
+.react-calendar__month-view__days__day--neighboringMonth.react-calendar__tile--now {
+  color: #ccc;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth.react-calendar__tile--now:enabled:hover,
+.react-calendar__month-view__days__day--neighboringMonth.react-calendar__tile--now:enabled:focus {
+  background: #ccc;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #ccc;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth:enabled:hover,
+.react-calendar__month-view__days__day--neighboringMonth:enabled:focus {
+  background: #ccc;
+}
+
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  display: none;
+}
