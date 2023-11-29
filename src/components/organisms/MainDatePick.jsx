@@ -40,6 +40,8 @@ const ListContainer = styled.ul`
     margin-top: 2rem;
     padding: 0 1rem;
     margin-top: 0;
+    overflow: hidden;
+    overflow-y: scroll;
   }
   @media (max-width: 768px) {
     margin: 1.5rem 0 1rem 0;
