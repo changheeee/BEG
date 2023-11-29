@@ -46,6 +46,8 @@ const ListContainer = styled.ul`
   @media (max-width: 768px) {
     margin: 1.5rem 0 1rem 0;
     border-top: 1px solid #ddd;
+    overflow: auto;
+    overflow-y: unset;
 
     /* border-top: 1px solid #ddd;
     margin-top: 1rem;
