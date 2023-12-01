@@ -69,12 +69,12 @@ export default function MainDatePick() {
 
   const formatDate = (dateString) => {
     const [year, month, day] = dateString.split(".");
-    return new Date(`${year}-${month}-${day}`);
+    return new Date(
+      `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`
+    );
   };
 
-  const sortedData = [...data].slice(0, 6);
-
-  const filteredData = sortedData.filter(
+  const filteredData = data.filter(
     (item) =>
       (formatDate(item.start) <= selectedDate &&
         formatDate(item.end) >= selectedDate) ||
@@ -120,9 +120,9 @@ export default function MainDatePick() {
 
       <ListContainer>
         {filteredData.length > 0 ? (
-          filteredData.map((item, index) => (
-            <ListCalendar key={index} item={item} />
-          ))
+          filteredData
+            .slice(0, 6)
+            .map((item, index) => <ListCalendar key={index} item={item} />)
         ) : (
           <p>{`${moment(selectedDate).format(
             "YYYY년 MM월 DD일"

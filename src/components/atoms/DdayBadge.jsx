@@ -11,6 +11,12 @@ const DdayBadgeWrap = styled.span`
   padding: 2px 5px;
 `;
 
+// 시작일을 나타내는 스타일드 컴포넌트
+const StartDayBadgeWrap = styled(DdayBadgeWrap)`
+  border-color: #007bff;
+  color: #007bff;
+`;
+
 // 전시 종료 상태를 나타내는 스타일드 컴포넌트
 const ExhibitionStatus = styled.span`
   padding: 2px 5px;
@@ -22,22 +28,28 @@ const ExhibitionStatus = styled.span`
 `;
 
 export default function DdayBadge({ item }) {
-  // 데이터에서 종료일을 추출합니다.
+  // 데이터에서 시작일과 종료일을 추출합니다.
+  const startDate = new Date(item.start);
   const endDate = new Date(item.end);
 
-  // 현재 날짜와 종료일과의 시간 차이를 계산합니다.
-  const timeDiff = endDate - new Date();
+  // 현재 날짜와의 시간 차이를 계산합니다.
+  const startDiff = startDate - new Date();
+  const endDiff = endDate - new Date();
 
   // 남은 일수를 계산합니다.
-  const dDay = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+  const startDay = Math.ceil(startDiff / (1000 * 60 * 60 * 24));
+  const endDay = Math.ceil(endDiff / (1000 * 60 * 60 * 24));
 
   return (
     <div>
-      {dDay > 0 ? (
-        // D-day가 0보다 크면 남은 일수를 표시합니다.
-        <DdayBadgeWrap>{`D-${dDay}`}</DdayBadgeWrap>
+      {startDay > 0 ? (
+        // 시작일이 아직 오지 않았으면 시작일까지 남은 일수를 표시합니다.
+        <StartDayBadgeWrap>{`${startDay}일 후 시작`}</StartDayBadgeWrap>
+      ) : endDay >= 0 ? (
+        // D-day가 0 이상이면 남은 일수를 표시합니다.
+        <DdayBadgeWrap>{`D-${endDay}`}</DdayBadgeWrap>
       ) : (
-        // D-day가 0 이하이면 전시가 종료되었음을 표시합니다.
+        // D-day가 0 보다 작으면 전시가 종료되었음을 표시합니다.
         <ExhibitionStatus>종료</ExhibitionStatus>
       )}{" "}
     </div>

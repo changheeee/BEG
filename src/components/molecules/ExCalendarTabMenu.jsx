@@ -20,7 +20,7 @@ const CategoryTab = styled.ul`
   border-bottom: 1px solid #ccc;
 
   overflow-x: scroll;
-  scrollbar-height: 0;
+  scrollbar-width: 0;
   scrollbar-color: transparent transparent;
   -ms-overflow-style: none;
 

@@ -52,7 +52,7 @@ export default function NavBar() {
         </NavLeft>
         <NavRight>
           <SearchButton />
-          {/* <LoggedIn /> */}
+          <LoggedIn />
           <LoggedIn loggedIn />
         </NavRight>
       </NavContainer>

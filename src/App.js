@@ -11,6 +11,8 @@ import Main from "./components/template/Main";
 import ExDetail from "./components/template/ExDetail";
 import Write from "./components/template/Write";
 import ReviewDetail from "./components/template/ReviewDetail";
+import Login from "./components/template/Login";
+import Join from "./components/template/Join";
 
 const Wrapper = styled.div`
   padding-top: 80px;
@@ -40,6 +42,8 @@ export default function App() {
           <ContentWrapper>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/join" element={<Join />} />
               <Route path="/exhibition" element={<Exhibition />} />
               <Route path="/ex_detail/:id" element={<ExDetail />} />
               <Route path="/community" element={<Community />} />
