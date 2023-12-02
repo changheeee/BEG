@@ -48,7 +48,8 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	input {
-		all:unset;
+		/* all:unset; */
+		border: none;
 	}
 	
 

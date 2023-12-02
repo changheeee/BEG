@@ -42,6 +42,7 @@ const SignWrap = styled.div`
       padding: 0.5rem;
       box-sizing: border-box;
       margin-bottom: 1rem;
+      font-size: 0.875rem;
       /* border-radius: 0.35rem; */
     }
 
@@ -136,6 +137,7 @@ export default function Login() {
         <h2>로그인</h2>
         <form onSubmit={onSubmitHandler}>
           <input
+            required
             type="email"
             value={Email}
             onChange={onEmailHandler}
@@ -143,6 +145,7 @@ export default function Login() {
           />
           {EmailError && <div className="errorText">{EmailError}</div>}
           <input
+            required
             type="password"
             value={Password}
             onChange={onPasswordHandler}
