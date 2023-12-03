@@ -124,7 +124,11 @@ export default function MainDatePick() {
             .slice(0, 6)
             .map((item, index) => <ListCalendar key={index} item={item} />)
         ) : (
-          <p>{`${moment(selectedDate).format(
+          <p
+            style={{
+              padding: "50px 0",
+            }}
+          >{`${moment(selectedDate).format(
             "YYYY년 MM월 DD일"
           )}에 진행하는 전시・공연이 없습니다.`}</p>
         )}

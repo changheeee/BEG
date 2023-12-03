@@ -13,6 +13,7 @@ import Write from "./components/template/Write";
 import ReviewDetail from "./components/template/ReviewDetail";
 import Login from "./components/template/Login";
 import Join from "./components/template/Join";
+import Mypage from "./components/template/Mypage";
 
 const Wrapper = styled.div`
   padding-top: 80px;
@@ -44,6 +45,7 @@ export default function App() {
               <Route path="/" element={<Main />} />
               <Route path="/login" element={<Login />} />
               <Route path="/join" element={<Join />} />
+              <Route path="/mypage" element={<Mypage />} />
               <Route path="/exhibition" element={<Exhibition />} />
               <Route path="/ex_detail/:id" element={<ExDetail />} />
               <Route path="/community" element={<Community />} />

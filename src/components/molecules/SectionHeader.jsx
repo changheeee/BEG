@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const SectionHeaderWrap = styled.div`
   width: 100%;
-  height: 271px;
+  height: ${(props) => (props.bgtype !== "mypage" ? "271px" : "200px")};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +36,8 @@ const SectionHeaderWrap = styled.div`
         return `url(/images/bg_community.png)`;
       case "search":
         return `url(/images/bg_search.png)`;
+      case "mypage":
+        return `url(/images/bg_mypage.png)`;
       default:
         return "none";
     }
@@ -52,6 +54,7 @@ export default function SectionHeader({
   location,
   community,
   search,
+  mypage,
 }) {
   let bgType = "";
   let sectionTitle = "";
@@ -68,6 +71,9 @@ export default function SectionHeader({
   } else if (search) {
     bgType = "search";
     sectionTitle = "검색결과 입니다.";
+  } else if (mypage) {
+    bgType = "mypage";
+    sectionTitle = "마이페이지";
   }
 
   return <SectionHeaderWrap bgtype={bgType}>{sectionTitle}</SectionHeaderWrap>;

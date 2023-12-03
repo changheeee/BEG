@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useNavigate, useDispatch } from "react";
-import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import SectionHeader from "../molecules/SectionHeader";
 import { SectionContent, DetailContent } from "../atoms/SectionContent";
-import MOCK_DATA from "../../MOCK_DATA.json";
-import RecommendedButton from "../atoms/RecommendButton";
-import PostButton from "../atoms/PostButton";
 
 const SignWrap = styled.div`
   width: 400px;
@@ -43,7 +38,7 @@ const SignWrap = styled.div`
       box-sizing: border-box;
       margin-bottom: 1rem;
       font-size: 0.875rem;
-      /* border-radius: 0.35rem; */
+      border-radius: 0.3rem;
     }
 
     .defaultButton {
@@ -63,6 +58,7 @@ const SignWrap = styled.div`
 
     .enabledButton {
       background-color: #333;
+      border-radius: 0.3rem;
     }
 
     .toJoin {

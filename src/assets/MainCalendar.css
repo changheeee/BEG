@@ -14,7 +14,8 @@
 /* 년도,월 라벨 */
 .react-calendar__navigation__label {
   order: 1;
-  font-size: 1.25rem;
+  padding-left: 0.3rem;
+  font-size: 1.675rem;
   letter-spacing: -0.04rem;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;

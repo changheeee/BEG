@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const SignUpWrap = styled.div`
   width: 400px;
-  padding-top: 50px;
+  padding: 50px 0 100px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ const SignUpWrap = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 1.5rem;
 
     h2 {
       font-size: 1.75rem;
@@ -43,6 +43,7 @@ const SignUpWrap = styled.div`
         box-sizing: border-box;
         margin-bottom: 1rem;
         display: inline-block;
+        border-radius: 0.3rem;
       }
 
       .gender {
@@ -93,13 +94,16 @@ const SignUpWrap = styled.div`
 
       .enabledButton {
         background-color: #333;
+        border-radius: 0.3rem;
       }
     }
   }
 `;
 
-const SignUp = () => {
+export default function Join() {
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
@@ -108,8 +112,8 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordConfirmError, setPasswordConfirmError] = useState("");
-  const [birthdateError, setBirthdateError] = useState("");
-  const [genderError, setGenderError] = useState("");
+  const [userNameError, setUserNameError] = useState("");
+  const [nickNameError, setNickNameError] = useState("");
 
   const [isInputValid, setInputValid] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -134,10 +138,26 @@ const SignUp = () => {
       : "";
   };
 
+  const validateUserName = () => {
+    const userNameRegex = /^[가-힣]{2,}$/;
+    return userName && !userNameRegex.test(userName)
+      ? "올바른 이름(한글 2자 이상)을 입력해주세요."
+      : "";
+  };
+
+  const validateNickName = () => {
+    const nickNameRegex = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
+    return nickName && !nickNameRegex.test(nickName)
+      ? "2자 이상 16자 이하, 영어 또는 숫자 또는 한글로 구성해야 합니다."
+      : "";
+  };
+
   useEffect(() => {
     setEmailError(validateEmail());
     setPasswordError(validatePassword());
     setPasswordConfirmError(validatePasswordConfirm());
+    setUserNameError(validateUserName());
+    setNickNameError(validateNickName());
 
     setInputValid(
       email &&
@@ -145,11 +165,13 @@ const SignUp = () => {
         passwordConfirm &&
         selectedDate &&
         gender &&
+        userName &&
+        nickName &&
         !emailError &&
         !passwordError &&
         !passwordConfirmError &&
-        !birthdateError &&
-        !genderError
+        !userNameError &&
+        !nickNameError
     );
   }, [
     email,
@@ -157,14 +179,26 @@ const SignUp = () => {
     passwordConfirm,
     selectedDate,
     gender,
+    userName,
+    nickName,
     emailError,
     passwordError,
     passwordConfirmError,
+    userNameError,
+    nickNameError,
   ]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Check if there are any validation errors
+    if (!isInputValid) {
+      alert("양식을 올바르게 입력해주세요.");
+      return;
+    }
+
     // Perform signup logic here
+    alert("회원가입 성공!");
   };
 
   return (
@@ -172,6 +206,17 @@ const SignUp = () => {
       <div className="formContainer">
         <h2>회원가입</h2>
         <form onSubmit={handleSubmit}>
+          <label>이름</label>
+          <input
+            required
+            className="text_input"
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            placeholder="이름"
+          />
+          {userNameError && <div className="errorText">{userNameError}</div>}
+
           <label>아이디</label>
           <input
             required
@@ -200,10 +245,9 @@ const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="비밀번호"
           ></input>
-
           {passwordError && <div className="errorText">{passwordError}</div>}
-          <label>비밀번호 확인</label>
 
+          <label>비밀번호 확인</label>
           <input
             required
             className="text_input"
@@ -215,6 +259,18 @@ const SignUp = () => {
           {passwordConfirmError && (
             <div className="errorText">{passwordConfirmError}</div>
           )}
+
+          <label>닉네임</label>
+          <input
+            required
+            className="text_input"
+            type="text"
+            value={nickName}
+            onChange={(e) => setNickName(e.target.value)}
+            placeholder="닉네임"
+          />
+          {nickNameError && <div className="errorText">{nickNameError}</div>}
+
           <label>생년월일</label>
           <input
             required
@@ -224,6 +280,7 @@ const SignUp = () => {
             onChange={(e) => setSelectedDate(e.target.value)}
             placeholder="생년월일"
           />
+
           <label>성별</label>
           <div className="gender">
             <label>
@@ -249,9 +306,11 @@ const SignUp = () => {
               />
             </label>
           </div>
+
           <button
             type="submit"
             className={`defaultButton ${isInputValid ? "enabledButton" : ""}`}
+            disabled={!isInputValid}
           >
             가입하기
           </button>
@@ -259,6 +318,4 @@ const SignUp = () => {
       </div>
     </SignUpWrap>
   );
-};
-
-export default SignUp;
+}
