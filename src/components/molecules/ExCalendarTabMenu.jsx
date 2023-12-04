@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SortedButton from "../atoms/SortedButton";
 import Today from "../atoms/Today";
 import ListVertical from "./ListVertical";
-import { ExhibitionListWrap } from "./ExCategoryTabMenu";
+import { ExhibitionListWrap } from "./CurrentExhibitions";
 
 const SortedWrap = styled.div`
   display: flex;
@@ -71,7 +71,7 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
     setSelectedCategory(category);
   };
 
-  let sortedData = [...data.list];
+  let sortedData = [...data];
 
   if (sortType === "bookmarked") {
     sortedData.sort((a, b) => b.bookmarked - a.bookmarked);
@@ -91,6 +91,7 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
   return (
     <>
       <CategoryTab>
+        {/* 탭 버튼 */}
         {CATEGORIES.map((category) => (
           <li
             key={category}
@@ -104,9 +105,13 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
           </li>
         ))}
       </CategoryTab>
+
+      {/* 정렬 버튼 */}
       <SortedWrap>
         <SortedButton setSortType={setSortType} />
       </SortedWrap>
+
+      {/* 전시 리스트 렌더링 부분 */}
       <ExhibitionListWrap>
         {filteredData.length > 0 ? (
           filteredData.map((item, index) => (

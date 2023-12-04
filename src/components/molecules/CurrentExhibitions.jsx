@@ -73,7 +73,7 @@ const formatDate = (dateString) => {
   return new Date(`${year}-${month}-${day}`);
 };
 
-export default function ExCategoryTabMenu({ data }) {
+export default function CurrentExhibitions({ data }) {
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [sortType, setSortType] = useState("date");
 
@@ -81,7 +81,7 @@ export default function ExCategoryTabMenu({ data }) {
     setSelectedCategory(category);
   };
 
-  let sortedData = [...data.list];
+  let sortedData = [...data];
 
   // 현재 날짜를 가져옵니다.
   const currentDate = new Date();

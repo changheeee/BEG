@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { RxEyeOpen, RxEyeClosed } from "react-icons/rx";
 
 const SignUpWrap = styled.div`
   width: 400px;
@@ -234,7 +235,11 @@ export default function Join() {
               className="passwordVisibilityToggle"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? "숨기기" : "보기"}
+              {showPassword ? (
+                <RxEyeClosed className="view_ico" />
+              ) : (
+                <RxEyeOpen className="view_ico" />
+              )}
             </span>
           </label>
           <input

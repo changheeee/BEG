@@ -9,7 +9,7 @@ const DatePickerWrap = styled.div`
   padding: 0.875rem 0;
 `;
 
-export default function HorizontalCalendar({ data }) {
+export default function UpcomingExhibitions({ data }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const selectedDay = (val) => {

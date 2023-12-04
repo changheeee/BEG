@@ -1,12 +1,15 @@
 import { React, useState } from "react";
+import { useRecoilValue } from "recoil"; // Recoil 훅 추가
+import { fetchListState } from "../../stores/recoilState"; // fetchListState import
+
 import styled from "styled-components";
-import data from "../../MOCK_DATA.json";
 import ExSortTab from "../atoms/ExSortTab";
-import HorizontalCalendar from "../commons/HorizontalCalendar";
-import ExCategoryTabMenu from "../molecules/ExCategoryTabMenu";
+import UpcomingExhibitions from "../commons/UpcomingExhibitions";
+import CurrentExhibitions from "../molecules/CurrentExhibitions";
 const TabContent = styled.div``;
 
 export default function ExTabMenu() {
+  const data = useRecoilValue(fetchListState); // Recoil에서 데이터 가져오기
   const [exNow, setExNow] = useState(true);
 
   const handleSortChange = (isExNow) => {
@@ -18,8 +21,8 @@ export default function ExTabMenu() {
     <>
       <ExSortTab exNow={exNow} handleSortChange={handleSortChange} />
       <TabContent>
-        {exNow && <ExCategoryTabMenu data={data} />}
-        {!exNow && <HorizontalCalendar data={data} />}
+        {exNow && <CurrentExhibitions data={data} />}
+        {!exNow && <UpcomingExhibitions data={data} />}
       </TabContent>
     </>
   );
