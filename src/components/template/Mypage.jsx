@@ -25,7 +25,8 @@ const MypageWrap = styled.div`
     .review {
       padding: 1.5rem;
       width: 50%;
-      border: 1px solid #ccc;
+      border: 1px solid #eee;
+      box-shadow: 4px 2px 6px 0px rgba(0, 0, 0, 0.12);
       border-radius: 1rem;
     }
 
@@ -49,11 +50,17 @@ const MypageWrap = styled.div`
       .button_container {
         display: flex;
         gap: 0.675rem;
+
         button {
           cursor: pointer;
           padding: 0.3rem 0.5rem;
-          border: 1px solid #ccc;
+          border: 1px solid #ddd;
           border-radius: 0.3rem;
+        }
+        .withdrawal-btn {
+          border: 1px solid #999;
+          background-color: #999;
+          color: #fefefe;
         }
       }
     }
@@ -63,8 +70,24 @@ const MypageWrap = styled.div`
     padding: 1.5rem;
     width: 100%;
     min-height: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
+    box-shadow: 4px 2px 6px 0px rgba(0, 0, 0, 0.12);
     border-radius: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+
+    .info_and_review {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+
+      .user_info,
+      .review {
+        width: 100%;
+      }
+    }
   }
 `;
 
@@ -96,8 +119,8 @@ function Mypage() {
                 ))}
               </ul>
               <div className="button_container">
-                <button>회원정보 수정</button>
-                <button>회원탈퇴</button>
+                <button className="edit-profile-btn">회원정보 수정</button>
+                <button className="withdrawal-btn">회원탈퇴</button>
               </div>
             </div>
             <div className="review">

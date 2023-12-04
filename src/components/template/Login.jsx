@@ -34,7 +34,7 @@ const SignWrap = styled.div`
     input {
       width: 100%;
       border: 1px solid #ccc;
-      padding: 0.5rem;
+      padding: 0.675rem;
       box-sizing: border-box;
       margin-bottom: 1rem;
       font-size: 0.875rem;
@@ -42,7 +42,6 @@ const SignWrap = styled.div`
     }
 
     .defaultButton {
-      cursor: pointer;
       width: 100%;
       padding: 0.75rem;
       background-color: #ccc;
@@ -57,6 +56,8 @@ const SignWrap = styled.div`
     }
 
     .enabledButton {
+      cursor: pointer;
+
       background-color: #333;
       border-radius: 0.3rem;
     }

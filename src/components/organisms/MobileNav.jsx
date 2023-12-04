@@ -6,6 +6,7 @@ import MenuButton from "../atoms/MenuButton";
 import SearchButton from "../atoms/SearchButton";
 import LoginButton from "../atoms/LoginButton";
 import LoggedIn from "../molecules/LoggedIn";
+import { IoMenuOutline, IoCloseOutline } from "react-icons/io5";
 
 // 모바일 네비게이션
 const MobileNavContainer = styled.div`
@@ -22,7 +23,10 @@ const MobileNavContainer = styled.div`
   background: #fefefedb;
   backdrop-filter: blur(3px);
   border-bottom: 0.5px solid #ccc;
-
+  .menu_ico {
+    font-size: 1.25rem;
+    color: #555;
+  }
   > a {
     height: 25px;
   }
@@ -55,7 +59,13 @@ function MobileNav({ toggleMenu, isMenuOpen }) {
     <>
       <MobileNavContainer>
         <LogoButton nav />
-        <div onClick={toggleMenu}>메뉴</div>
+        <div onClick={toggleMenu}>
+          {isMenuOpen ? (
+            <IoCloseOutline className="menu_ico" />
+          ) : (
+            <IoMenuOutline className="menu_ico" />
+          )}
+        </div>
       </MobileNavContainer>
       {isMenuOpen && (
         <MobileMenu>

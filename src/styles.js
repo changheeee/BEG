@@ -40,7 +40,7 @@ import reset from "styled-reset";
 export const GlobalStyles = createGlobalStyle`
 
 	${reset}
-	
+
 	* {
 		margin:0;
 		padding:0;

@@ -15,6 +15,14 @@ const SearchInputWrap = styled.div`
   border-radius: 5px;
   padding: 0 0.3em;
 
+  input {
+    width: 100%;
+
+    &:focus {
+      border: none;
+    }
+  }
+
   @media (max-width: 768px) {
     width: 150px;
   }

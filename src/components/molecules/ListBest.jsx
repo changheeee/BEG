@@ -21,8 +21,9 @@ const ListBestWrap = styled.ul`
 
   @media (max-width: 768px) {
     margin-bottom: 50px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
+    border: 1px solid #eee;
+    box-shadow: 4px 2px 6px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 0.5rem;
     overflow: hidden;
 
     > li:first-child {
@@ -39,8 +40,10 @@ const ListBestWrap = styled.ul`
 const ListBestContainer = styled.li`
   display: flex;
   width: 49%;
-  border: 1px solid #ccc;
-  border-radius: 25px;
+  border: 1px solid #eee;
+  box-shadow: 4px 2px 6px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 0.675rem;
+
   overflow: hidden;
 
   @media (max-width: 768px) {
@@ -65,7 +68,7 @@ const Right = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #eee;
 
   @media (max-width: 768px) {
     width: auto;
