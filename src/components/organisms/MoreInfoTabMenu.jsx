@@ -6,6 +6,7 @@ const InfoCategory = ["공연・전시정보", "공연・전시장 안내", "관
 
 // 스타일드 컴포넌트 정의
 const MoreInfoTabHeader = styled.ul`
+  margin-top: 3rem;
   width: 100%;
   display: flex;
 `;
@@ -21,7 +22,13 @@ const MoreInfoTabListItem = styled.li`
   font-weight: ${(props) => (props.isActive ? "700" : "400")};
 `;
 
-const MoreInfoTabContent = styled.div``;
+const MoreInfoTabContent = styled.div`
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function MoreInfoTabMenu() {
   // 활성화된 탭을 관리하는 상태

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ExCalendarTabMenu from "../molecules/ExCalendarTabMenu";
 
 const DatePickerWrap = styled.div`
-  margin-top: 1.25rem;
+  margin-top: 0.75rem;
   border-top: 1px solid #ccc;
   padding: 0.875rem 0;
 `;

@@ -69,14 +69,17 @@ export default function MainNowEx() {
     (a, b) => new Date(a.end).getTime() - new Date(b.end).getTime()
   );
 
+  // 리스트를 20개로 제한
+  const limitedList = ongoingExList.slice(0, 20);
+
   const sliderRef = useRef(null);
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: limitedList.length < 5 ? limitedList.length : 5, // 데이터 수가 5보다 작으면 데이터 수 만큼, 아니라면 5로 설정
+    slidesToScroll: limitedList.length < 5 ? limitedList.length : 5, // 데이터 수가 5보다 작으면 데이터 수 만큼, 아니라면 5로 설정
     autoplay: false,
     autoplaySpeed: 5000,
     pauseOnHover: true,
@@ -96,6 +99,7 @@ export default function MainNowEx() {
       {
         breakpoint: 1840,
         settings: {
+          // dots: false,
           slidesToShow: 4,
           slidesToScroll: 4,
         },
@@ -103,6 +107,7 @@ export default function MainNowEx() {
       {
         breakpoint: 1500,
         settings: {
+          // dots: false,
           slidesToShow: 3,
           slidesToScroll: 3,
         },
@@ -110,6 +115,7 @@ export default function MainNowEx() {
       {
         breakpoint: 1240,
         settings: {
+          // dots: false,
           slidesToShow: 2,
           slidesToScroll: 2,
         },
@@ -117,6 +123,7 @@ export default function MainNowEx() {
       {
         breakpoint: 768,
         settings: {
+          dots: false,
           slidesToShow: 1,
           slidesToScroll: 1,
         },
@@ -127,8 +134,10 @@ export default function MainNowEx() {
   return (
     <MainExWrap>
       <Slider ref={sliderRef} {...settings}>
-        {ongoingExList.map((item, index) => (
-          <MainExList key={index} item={item} />
+        {limitedList.map((item, index) => (
+          <>
+            <MainExList key={index} item={item} />
+          </>
         ))}
       </Slider>
     </MainExWrap>

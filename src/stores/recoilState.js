@@ -14,6 +14,7 @@ export const fetchListState = selector({
     const response = await axios.get(
       `${process.env.REACT_APP_API_BASE_URL}/list`
     );
+
     const data = response.data;
 
     return data;

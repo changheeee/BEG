@@ -39,11 +39,24 @@ const CategoryTab = styled.ul`
 
 export const ExhibitionListWrap = styled.ul`
   margin-top: 1.25rem;
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  grid-gap: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1919px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 1560px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 1200px) {
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SortedButton from "../atoms/SortedButton";
-import "../../assets/pagination.css";
 import Pagination from "../atoms/Pagination";
 import ListVertical from "./ListVertical";
 import { ExhibitionListWrap } from "./CurrentExhibitions";

@@ -9,6 +9,14 @@
     cursor: pointer;
   }
 }
+.pagination__arrow {
+  color: #999;
+  transition: all 0.25s;
+}
+
+.pagination__arrow:hover {
+  color: #000;
+}
 
 .pagination__link {
   transition: all 0.25s;
