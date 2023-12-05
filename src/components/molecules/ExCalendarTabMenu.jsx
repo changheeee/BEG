@@ -1,8 +1,8 @@
-// ExCalendarTabMenu.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SortedButton from "../atoms/SortedButton";
-import Today from "../atoms/Today";
+import "../../assets/pagination.css";
+import Pagination from "../atoms/Pagination";
 import ListVertical from "./ListVertical";
 import { ExhibitionListWrap } from "./CurrentExhibitions";
 
@@ -62,13 +62,13 @@ const formatDate = (dateString) => {
 };
 
 export default function ExCalendarTabMenu({ data, selectedDate }) {
-  console.log(selectedDate);
-
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [sortType, setSortType] = useState("date");
+  const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 번호
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+    setCurrentPage(0); // 카테고리 변경 시 페이지를 처음으로 초기화
   };
 
   let sortedData = [...data];
@@ -83,10 +83,20 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
     (item) =>
       (selectedCategory === "전체" || item.category === selectedCategory) &&
       ((formatDate(item.start) <= selectedDate &&
-        formatDate(item.end) >= selectedDate) || // 이벤트가 선택된 날짜를 기간으로 포함하는 경우
-        formatDate(item.start).toDateString() === selectedDate.toDateString() || // 이벤트가 선택된 날짜에 시작하는 경우
-        formatDate(item.end).toDateString() === selectedDate.toDateString()) // 이벤트가 선택된 날짜에 종료하는 경우
+        formatDate(item.end) >= selectedDate) ||
+        formatDate(item.start).toDateString() === selectedDate.toDateString() ||
+        formatDate(item.end).toDateString() === selectedDate.toDateString())
   );
+
+  // 페이지네이션
+  const PER_PAGE = 10; // 한 페이지에 보여줄 아이템 수
+
+  const pageCount = Math.ceil(filteredData.length / PER_PAGE); // 전체 페이지 수
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+    window.scrollTo(0, 320); // 페이지 변경 시 스크롤을 맨 위로 이동
+  };
 
   return (
     <>
@@ -113,14 +123,21 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
 
       {/* 전시 리스트 렌더링 부분 */}
       <ExhibitionListWrap>
-        {filteredData.length > 0 ? (
-          filteredData.map((item, index) => (
+        {filteredData
+          .slice(currentPage * PER_PAGE, (currentPage + 1) * PER_PAGE)
+          .map((item, index) => (
             <ListVertical key={index} item={item} />
-          ))
-        ) : (
-          <p>선택된 날짜에 해당하는 공연・전시가 없습니다</p>
-        )}
+          ))}
       </ExhibitionListWrap>
+
+      {/* 페이지네이션 */}
+      {pageCount > 0 && (
+        <Pagination
+          pageCount={Math.max(1, pageCount - 1)}
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+      )}
     </>
   );
 }

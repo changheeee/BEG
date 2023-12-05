@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SortedButton from "../atoms/SortedButton";
 import Today from "../atoms/Today";
 import ListVertical from "./ListVertical";
+import Pagination from "../atoms/Pagination";
 
 const TodayAndSorted = styled.div`
   display: flex;
@@ -76,25 +77,44 @@ const formatDate = (dateString) => {
 export default function CurrentExhibitions({ data }) {
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [sortType, setSortType] = useState("date");
+  const [currentPage, setCurrentPage] = useState(0);
+  const [filteredData, setFilteredData] = useState([]); // 필터링된 데이터 추가
+
+  useEffect(() => {
+    // 카테고리 변경 시 필터링된 데이터 업데이트
+    const filtered = data
+      .filter(
+        (item) =>
+          (selectedCategory === "전체" || item.category === selectedCategory) &&
+          formatDate(item.start) <= new Date() &&
+          formatDate(item.end) >= new Date()
+      )
+      .sort((a, b) =>
+        sortType === "bookmarked"
+          ? b.bookmarked - a.bookmarked
+          : new Date(b.start) - new Date(a.start)
+      );
+
+    setFilteredData(filtered);
+    setCurrentPage(0); // 페이지를 처음으로 초기화
+  }, [data, selectedCategory, sortType]);
+
+  // 페이지네이션
+  const PER_PAGE = 10; // 한 페이지에 보여줄 아이템 수
+  const pageCount = Math.ceil(filteredData.length / PER_PAGE);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
-  let sortedData = [...data];
-
-  // 현재 날짜를 가져옵니다.
-  const currentDate = new Date();
-
-  //북마크수가 높은 순으로 정렬 아니면 최신순
-  if (sortType === "bookmarked") {
-    sortedData.sort((a, b) => b.bookmarked - a.bookmarked);
-  } else {
-    sortedData.reverse();
-  }
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+    window.scrollTo(0, 320); // 페이지 변경 시 스크롤을 맨 위로 이동
+  };
 
   return (
     <>
+      {/* 탭 버튼 */}
       <CategoryTab>
         {CATEGORIES.map((category) => (
           <li
@@ -109,23 +129,30 @@ export default function CurrentExhibitions({ data }) {
           </li>
         ))}
       </CategoryTab>
+
+      {/* 정렬 버튼 */}
       <TodayAndSorted>
         <Today />
         <SortedButton setSortType={setSortType} />
       </TodayAndSorted>
+
+      {/* 전시 리스트 렌더링 부분 */}
       <ExhibitionListWrap>
-        {sortedData
-          .filter(
-            (item) =>
-              (selectedCategory === "전체" ||
-                item.category === selectedCategory) &&
-              formatDate(item.start) <= currentDate &&
-              formatDate(item.end) >= currentDate
-          )
+        {filteredData
+          .slice(currentPage * PER_PAGE, (currentPage + 1) * PER_PAGE)
           .map((item, index) => (
             <ListVertical key={index} item={item} />
           ))}
       </ExhibitionListWrap>
+
+      {/* 페이지네이션 */}
+      {pageCount > 0 && (
+        <Pagination
+          pageCount={Math.max(1, pageCount - 1)}
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+      )}
     </>
   );
 }
