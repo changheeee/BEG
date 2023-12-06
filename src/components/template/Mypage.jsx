@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { PageContent } from "../atoms/SectionContent";
 import { fetchUserInfoState } from "../../stores/recoilState";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import SectionHeader from "../molecules/SectionHeader";
 
 const MypageWrap = styled.div`
