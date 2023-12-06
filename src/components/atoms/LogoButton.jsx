@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const Logo = styled.a`
+const Logo = styled(Link)`
   display: block;
   height: auto;
   > img {
@@ -17,7 +18,7 @@ export default function LogoButton({ nav }) {
   const imageUrl = nav ? "/images/logo_nav.svg" : "/images/logo_footer.svg";
 
   return (
-    <Logo href="/">
+    <Logo to="/">
       <img src={imageUrl} alt="로고 이미지" />
     </Logo>
   );

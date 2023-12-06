@@ -179,9 +179,9 @@ function BoardList({ item }) {
             <strong>[{item.ex_title}]</strong>
           </div>
           {/* 관람후기 제목, 미리보기 */}
-          <a className="post_title" href={`/review_detail/${item.id}`}>
+          <Link className="post_title" to={`/review_detail/${item.id}`}>
             {item.title}
-          </a>
+          </Link>
           <div
             className="post_content"
             dangerouslySetInnerHTML={{ __html: item.content }}

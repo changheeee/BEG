@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 // 다른 이름으로 변경하거나, 다른 파일에서 import
@@ -31,16 +32,16 @@ export default function MenuButton() {
   return (
     <Menu>
       <li>
-        <a href="/exhibition">공연・전시</a>
+        <Link to="/exhibition">공연・전시</Link>
       </li>
       <li>
-        <a href="">공연・전시공간</a>
+        <Link to="">공연・전시공간</Link>
       </li>
       <li>
-        <a href="/community">커뮤니티</a>
+        <Link to="/community">커뮤니티</Link>
       </li>
       <li>
-        <a href="">소개</a>
+        <Link to="">소개</Link>
       </li>
     </Menu>
   );

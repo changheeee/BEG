@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const ExListPosterWrap = styled.a`
+const ExListPosterWrap = styled(Link)`
   display: block;
   width: 100%;
   height: 100%;
@@ -16,7 +17,7 @@ export default function ExListPoster({ item }) {
   const imageSrc = item.src;
 
   return (
-    <ExListPosterWrap href={`/ex_detail/${item.id}`}>
+    <ExListPosterWrap to={`/ex_detail/${item.id}`}>
       {imageSrc && <img src={imageSrc} alt={imageSrc} />}
       {!imageSrc && (
         // 이미지가 없을 경우 플레이스홀더를 렌더링하거나 상황에 맞게 처리

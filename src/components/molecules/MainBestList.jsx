@@ -7,8 +7,9 @@ import ExListPeriod from "../atoms/ExListPeriod";
 import CategoryBadge from "../atoms/CategoryBadge";
 import DdayBadge from "../atoms/DdayBadge";
 import { PosterMainBest } from "../atoms/PosterStyle.js";
+import { Link } from "react-router-dom";
 
-const ListVerticalWrap = styled.a`
+const ListVerticalWrap = styled(Link)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -61,7 +62,7 @@ const BadgeWrap = styled.div`
 
 export default function MainBestList({ ranking, item }) {
   return (
-    <ListVerticalWrap href={`/ex_detail/${item.id}`} ranking={ranking}>
+    <ListVerticalWrap to={`/ex_detail/${item.id}`} ranking={ranking}>
       <div className="ranking_badge">{ranking}</div>
       <PosterMainBest>
         <ExListPoster item={item} />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useNavigate, useDispatch } from "react";
 import { styled } from "styled-components";
 import { SectionContent, DetailContent } from "../atoms/SectionContent";
+import { Link } from "react-router-dom";
 
 const SignWrap = styled.div`
   width: 400px;
@@ -158,7 +159,7 @@ export default function Login() {
         </form>
         <div className="toJoin">
           <span>아직 회원이 아니신가요?</span>
-          <a href="/join">회원가입</a>
+          <Link to="/join">회원가입</Link>
         </div>
       </div>
     </SignWrap>

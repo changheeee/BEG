@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const MypageBtn = styled.a`
+const MypageBtn = styled(Link)`
   display: flex;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
@@ -11,7 +12,7 @@ const MypageBtn = styled.a`
 export default function MypageButton() {
   return (
     <div>
-      <MypageBtn href="/mypage">
+      <MypageBtn to="/mypage">
         {/* <img
           src="/images/ico_my.svg"
           style={{ height: "16px", marginRight: ".2em" }}

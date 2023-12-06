@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PostButton from "./PostButton";
+import { Link } from "react-router-dom";
 
 const StyledButton = styled(PostButton)`
   background-color: #555;
@@ -9,5 +10,9 @@ const StyledButton = styled(PostButton)`
 `;
 
 export default function WriteButton() {
-  return <StyledButton href="/write">글쓰기</StyledButton>;
+  return (
+    <Link to="/write">
+      <StyledButton>글쓰기</StyledButton>
+    </Link>
+  );
 }

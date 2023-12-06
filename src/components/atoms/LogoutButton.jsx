@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const LogoutBtn = styled.a`
+const LogoutBtn = styled(Link)`
   margin-right: 0.65rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
@@ -11,7 +12,7 @@ const LogoutBtn = styled.a`
 export default function LogoutButton() {
   return (
     <div>
-      <LogoutBtn href="/logout">LOGOUT</LogoutBtn>
+      <LogoutBtn to="/logout">LOGOUT</LogoutBtn>
     </div>
   );
 }

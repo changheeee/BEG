@@ -6,6 +6,7 @@ import { PosterCommunityBest } from "../atoms/PosterStyle";
 import data from "../../MOCK_DATA.json";
 import ReviewPoster from "../atoms/ReviewPoster";
 import CategoryBadge from "../atoms/CategoryBadge";
+import { Link } from "react-router-dom";
 
 const ListBestWrap = styled.ul`
   margin-bottom: 100px;
@@ -221,9 +222,9 @@ export default function ListBest() {
                     <CategoryBadge item={item} />
                     <strong>[{item.ex_title}]</strong>
                   </BestTop>
-                  <a className="title" href={`/review_detail/${item.id}`}>
+                  <Link className="title" to={`/review_detail/${item.id}`}>
                     {item.title}
-                  </a>
+                  </Link>
                   <div
                     className="post_content"
                     dangerouslySetInnerHTML={{ __html: item.content }}
@@ -258,9 +259,9 @@ export default function ListBest() {
                   <CategoryBadge item={item} />
                   <strong>[{item.ex_title}]</strong>
                 </BestTop>
-                <a className="title" href={`/review_detail/${item.id}`}>
+                <Link className="title" to={`/review_detail/${item.id}`}>
                   {item.title}
-                </a>
+                </Link>
                 <div
                   className="post_content"
                   dangerouslySetInnerHTML={{ __html: item.content }}

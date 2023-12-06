@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import SectionHeader from "../molecules/SectionHeader";
 import { SectionContent, DetailContent } from "../atoms/SectionContent";
@@ -145,7 +145,9 @@ export default function ReviewDetail() {
           />
         </DetailSection>
         <DetailFooter>
-          <ListButton href="/community">목록</ListButton>
+          <Link to="/community">
+            <ListButton>목록</ListButton>
+          </Link>
           <EditButton>수정</EditButton>
         </DetailFooter>
       </DetailContent>
