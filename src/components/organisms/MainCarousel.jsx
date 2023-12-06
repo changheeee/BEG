@@ -2,10 +2,14 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { styled } from "styled-components";
+import { Link } from "react-router-dom";
 
 const MainCarouselWrap = styled.div`
   height: auto;
   position: relative;
+
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
 
   .item {
     display: flex;
@@ -14,16 +18,34 @@ const MainCarouselWrap = styled.div`
     /* width: 100%; */
     height: 100%;
     background-color: #eee;
+
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.339) 0%,
+        rgba(255, 255, 255, 0) 20%
+      );
+
+      pointer-events: none;
     }
   }
 
   .carousel .dot {
     width: 10px;
     height: 10px;
-    background-color: #555;
+    background-color: #000;
     box-shadow: none;
   }
   .carousel .selected {
@@ -48,7 +70,9 @@ export default function MainCarousel() {
         stopOnHover={true} // 마우스 호버 시 자동 슬라이드 일시 중지
       >
         <div className="item">
-          <img src="/images/bg_main_1.png" alt="" />
+          <Link to="">
+            <img src="/images/bg_main_1.png" alt="" />
+          </Link>
         </div>
         <div className="item">
           <img src="/images/bg_main_1.png" alt="" />

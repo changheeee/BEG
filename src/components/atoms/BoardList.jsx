@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import CategoryBadge from "../atoms/CategoryBadge";
+import { Link } from "react-router-dom";
+import { PosterExhibition } from "./PosterStyle";
 
 const BoardListWrap = styled.li`
   padding: 0.5rem;
@@ -11,6 +13,10 @@ const BoardListWrap = styled.li`
   .poster {
     border: 1px solid #eee;
     height: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.12);
+
     > img {
       height: 100%;
     }
@@ -158,12 +164,12 @@ function BoardList({ item }) {
   return (
     <BoardListWrap>
       {/* 포스터 이미지 */}
-      <a className="poster" href={`/review_detail/${item.id}`}>
+      <Link className="poster" to={`/review_detail/${item.id}`}>
         <img
           src={item.src ? item.src : "/images/poster_undefined.png"}
           alt=""
         />
-      </a>
+      </Link>
       {/* 우측 게시글 영역 */}
       <div className="content-wrapper">
         <div className="inner-content">

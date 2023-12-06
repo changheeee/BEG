@@ -45,6 +45,7 @@ export const ExhibitionListWrap = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
+  align-items: center;
   grid-gap: 1rem;
 
   @media (max-width: 1919px) {
@@ -56,6 +57,7 @@ export const ExhibitionListWrap = styled.ul`
   }
 
   @media (max-width: 1200px) {
+    gap: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

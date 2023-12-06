@@ -15,7 +15,7 @@ const ListVerticalWrap = styled.a`
   width: fit-content;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 95%;
     /* justify-content: center; */
     /* align-items: center; */
   }

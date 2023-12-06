@@ -15,15 +15,15 @@ const ListVerticalWrap = styled.a`
   width: fit-content;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 95%;
+    /* padding: 2rem; */
     /* justify-content: center; */
     /* align-items: center; */
   }
 
   .ranking_badge {
     position: absolute;
-    /* left: -5px; */
-    border-end-end-radius: 10px;
+    border-radius: 0.65rem 0 0.65rem 0;
     top: 0;
     display: flex;
     justify-content: center;
@@ -31,11 +31,17 @@ const ListVerticalWrap = styled.a`
     width: 40px;
     height: 40px;
     background-color: ${({ ranking }) =>
-      ranking === 1 ? "#d28200c6" : "#353535c8"}; // 조건에 따라 배경색 변경
+      ranking === 1 ? "#ff00a2c5" : "#0008ffc7"}; // 조건에 따라 배경색 변경
     color: #fefefe;
     font-size: 1.25rem;
     font-weight: 700;
-    box-shadow: 4px 6px 6px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.12);
+
+    @media (max-width: 768px) {
+      /* font-size: 1rem;
+      width: 30px;
+      height: 30px; */
+    }
   }
 `;
 
