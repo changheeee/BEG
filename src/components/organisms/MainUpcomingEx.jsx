@@ -1,10 +1,8 @@
 import React, { useRef } from "react";
-import { useRecoilValue } from "recoil"; // Recoil 훅 추가
 import Slider from "react-slick";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import MainExList from "../molecules/MainExList";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { fetchListState } from "../../stores/recoilState"; // fetchListState import
 
 const Arrow = styled.div`
   display: flex;
@@ -51,10 +49,7 @@ const SliderArrow = ({ direction, onClick }) => (
   </Arrow>
 );
 
-export default function MainUpcomingEx() {
-  const data = useRecoilValue(fetchListState); // Recoil에서 데이터 가져오기
-  console.log(data);
-
+export default function MainUpcomingEx({ data }) {
   // 오늘 날짜를 구합니다.
   const today = new Date();
 

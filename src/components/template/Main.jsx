@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
+import { useRecoilValue } from "recoil";
+import { fetchListState, fetchUserInfoState } from "../../stores/recoilState";
+
 import { MainContent } from "../atoms/SectionContent";
 import MainCarousel from "../organisms/MainCarousel";
 import MainExBest from "../organisms/MainExBest";
 import { MainContentTitle } from "../atoms/ContentTitle";
-// import data from "../../MOCK_DATA.json";
 
 import MainDatePick from "../organisms/MainDatePick";
 import MoreButton from "../atoms/MoreButton";
@@ -11,6 +13,9 @@ import MainNowEx from "../organisms/MainNowEx";
 import MainUpcomingEx from "../organisms/MainUpcomingEx";
 
 export default function Main() {
+  const data = useRecoilValue(fetchListState);
+  const userInfo = useRecoilValue(fetchUserInfoState);
+
   const [exNow, setExnow] = useState(true);
   const exNowHandler = () => {
     setExnow(!exNow);
@@ -44,7 +49,7 @@ export default function Main() {
       <MainDatePick />
       <MainContentTitle>
         <h3 style={{ marginTop: "100px", display: "flex" }}>
-          <h4
+          <p
             style={{
               ...(exNow ? activeStyle : inactiveStyle),
               marginRight: "1rem",
@@ -52,16 +57,25 @@ export default function Main() {
             onClick={exNowHandler}
           >
             지금 볼만한 전시
-          </h4>
-          <h4
+          </p>
+          <p
             style={!exNow ? activeStyle : inactiveStyle}
             onClick={exNowHandler}
           >
             다가오는 전시
-          </h4>
+          </p>
         </h3>
       </MainContentTitle>
-      {exNow ? <MainNowEx /> : <MainUpcomingEx />}
+
+      {exNow ? (
+        <Suspense fallback={<div>Loading...</div>}>
+          <MainNowEx data={data} />
+        </Suspense>
+      ) : (
+        <Suspense fallback={<div>Loading...</div>}>
+          <MainUpcomingEx data={data} />
+        </Suspense>
+      )}
     </MainContent>
   );
 }

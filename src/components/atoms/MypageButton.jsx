@@ -12,13 +12,7 @@ const MypageBtn = styled(Link)`
 export default function MypageButton() {
   return (
     <div>
-      <MypageBtn to="/mypage">
-        {/* <img
-          src="/images/ico_my.svg"
-          style={{ height: "16px", marginRight: ".2em" }}
-        /> */}
-        MY
-      </MypageBtn>
+      <MypageBtn to="/mypage">MY</MypageBtn>
     </div>
   );
 }
