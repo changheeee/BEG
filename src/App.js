@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
@@ -36,26 +37,28 @@ const ContentWrapper = styled.div`
 export default function App() {
   return (
     <RecoilRoot>
-      <Router>
-        <Wrapper>
-          <GlobalStyles />
-          <NavBar />
-          <ContentWrapper>
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/join" element={<Join />} />
-              <Route path="/mypage" element={<Mypage />} />
-              <Route path="/exhibition" element={<Exhibition />} />
-              <Route path="/ex_detail/:id" element={<ExDetail />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/review_detail/:id" element={<ReviewDetail />} />
-              <Route path="/write" element={<Write />} />
-            </Routes>
-          </ContentWrapper>
-          <Footer />
-        </Wrapper>
-      </Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Router>
+          <Wrapper>
+            <GlobalStyles />
+            <NavBar />
+            <ContentWrapper>
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/join" element={<Join />} />
+                <Route path="/mypage" element={<Mypage />} />
+                <Route path="/exhibition" element={<Exhibition />} />
+                <Route path="/ex_detail/:id" element={<ExDetail />} />
+                <Route path="/community" element={<Community />} />
+                <Route path="/review_detail/:id" element={<ReviewDetail />} />
+                <Route path="/write" element={<Write />} />
+              </Routes>
+            </ContentWrapper>
+            <Footer />
+          </Wrapper>
+        </Router>
+      </Suspense>
     </RecoilRoot>
   );
 }

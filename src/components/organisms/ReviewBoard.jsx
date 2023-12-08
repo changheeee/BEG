@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import BoardSearchInput from "../atoms/BoardSearchInput";
 import WriteButton from "../atoms/WriteButton";
 import { styled } from "styled-components";
-import data from "../../MOCK_DATA.json";
 import BoardSortedButton from "../atoms/BoardSortedButton";
 import BoardList from "../atoms/BoardList";
 
@@ -19,9 +18,9 @@ const BoardContent = styled.ul`
   width: 100%;
 `;
 
-export default function ReviewBoard() {
+export default function ReviewBoard({ data }) {
   const [sortType, setSortType] = useState("date");
-  const POSTS = data.posts;
+  const POSTS = [...data];
 
   let sortedData = [...POSTS];
 

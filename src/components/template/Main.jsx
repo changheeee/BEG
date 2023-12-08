@@ -14,7 +14,6 @@ import MainUpcomingEx from "../organisms/MainUpcomingEx";
 
 export default function Main() {
   const data = useRecoilValue(fetchListState);
-  const userInfo = useRecoilValue(fetchUserInfoState);
 
   const [exNow, setExnow] = useState(true);
   const exNowHandler = () => {
@@ -36,46 +35,42 @@ export default function Main() {
   };
 
   return (
-    <MainContent>
-      <MainCarousel />
-      <MainContentTitle>
-        <h3 style={{ marginTop: "80px" }}>전시 랭킹</h3>
-      </MainContentTitle>
-      <MainExBest />
-      <MainContentTitle>
-        <h3 style={{ marginTop: "100px" }}>전시 캘린더</h3>
-        <MoreButton />
-      </MainContentTitle>
-      <MainDatePick />
-      <MainContentTitle>
-        <h3 style={{ marginTop: "100px", display: "flex" }}>
-          <p
-            style={{
-              ...(exNow ? activeStyle : inactiveStyle),
-              marginRight: "1rem",
-            }}
-            onClick={exNowHandler}
-          >
-            지금 볼만한 전시
-          </p>
-          <p
-            style={!exNow ? activeStyle : inactiveStyle}
-            onClick={exNowHandler}
-          >
-            다가오는 전시
-          </p>
-        </h3>
-      </MainContentTitle>
+    <>
+      <Suspense fallback={<div>Loading...</div>}>
+        <MainContent>
+          <MainCarousel />
+          <MainContentTitle>
+            <h3 style={{ marginTop: "80px" }}>전시 랭킹</h3>
+          </MainContentTitle>
+          <MainExBest />
+          <MainContentTitle>
+            <h3 style={{ marginTop: "100px" }}>전시 캘린더</h3>
+            <MoreButton />
+          </MainContentTitle>
+          <MainDatePick />
+          <MainContentTitle>
+            <h3 style={{ marginTop: "100px", display: "flex" }}>
+              <p
+                style={{
+                  ...(exNow ? activeStyle : inactiveStyle),
+                  marginRight: "1rem",
+                }}
+                onClick={exNowHandler}
+              >
+                지금 볼만한 전시
+              </p>
+              <p
+                style={!exNow ? activeStyle : inactiveStyle}
+                onClick={exNowHandler}
+              >
+                다가오는 전시
+              </p>
+            </h3>
+          </MainContentTitle>
 
-      {exNow ? (
-        <Suspense fallback={<div>Loading...</div>}>
-          <MainNowEx data={data} />
-        </Suspense>
-      ) : (
-        <Suspense fallback={<div>Loading...</div>}>
-          <MainUpcomingEx data={data} />
-        </Suspense>
-      )}
-    </MainContent>
+          {exNow ? <MainNowEx data={data} /> : <MainUpcomingEx data={data} />}
+        </MainContent>
+      </Suspense>
+    </>
   );
 }

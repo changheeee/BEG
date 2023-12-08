@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { PosterCommunityBest } from "../atoms/PosterStyle";
-import data from "../../MOCK_DATA.json";
 import ReviewPoster from "../atoms/ReviewPoster";
 import CategoryBadge from "../atoms/CategoryBadge";
 import { Link } from "react-router-dom";
@@ -175,8 +174,8 @@ const BestFooter = styled.div`
   }
 `;
 
-export default function ListBest() {
-  const sortedPosts = data.posts.sort((a, b) => b.likes - a.likes);
+export default function ListBest({ data }) {
+  const sortedPosts = [...data].sort((a, b) => b.likes - a.likes);
   const topPosts = sortedPosts.slice(0, 4);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
