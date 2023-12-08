@@ -79,6 +79,7 @@ https://busanexhibitionguide.netlify.app/
 ### 김창희 Frontend dev
 
 - 디자인
+    - [Figma](https://www.figma.com/file/MRvSYpuj55VFUyRK7jvb4A/Busan-Exhibition?type=design&node-id=0%3A1&mode=design&t=pfx7iJC2o9s88sKO-1)
 - 반응형 대응
 - 공연・전시 리스트 및 필터링 구현
 - Recoil 전역상태관리
