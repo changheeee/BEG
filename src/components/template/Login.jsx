@@ -82,11 +82,12 @@ const SignWrap = styled.div`
     letter-spacing: -0.04rem;
   }
 `;
+
 export default function Login() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [EmailError, setEmailError] = useState("");
-  const [PasswordError, setPasswordError] = useState("");
+  // const [EmailError, setEmailError] = useState("");
+  // const [PasswordError, setPasswordError] = useState("");
   const [isInputValid, setInputValid] = useState(false);
 
   const onEmailHandler = (event) => {
@@ -104,29 +105,37 @@ export default function Login() {
   };
 
   useEffect(() => {
-    const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z]).{8,}$/;
-
-    if (Email && !emailRegex.test(Email)) {
-      setEmailError("올바른 이메일을 입력해주세요.");
-    } else {
-      setEmailError("");
-    }
-
-    if (Password && !passwordRegex.test(Password)) {
-      setPasswordError(
-        "비밀번호는 최소 하나의 숫자, 소문자를 포함해야 하며 8자 이상이어야 합니다."
-      );
-    } else {
-      setPasswordError("");
-    }
-
-    if (emailRegex.test(Email) && passwordRegex.test(Password)) {
+    if (Email && Password) {
       setInputValid(true);
     } else {
       setInputValid(false);
     }
-  }, [Email, Password]);
+  });
+
+  // useEffect(() => {
+  //   const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+  //   const passwordRegex = /^(?=.*\d)(?=.*[a-z]).{8,}$/;
+
+  //   if (Email && !emailRegex.test(Email)) {
+  //     setEmailError("올바른 이메일을 입력해주세요.");
+  //   } else {
+  //     setEmailError("");
+  //   }
+
+  //   if (Password && !passwordRegex.test(Password)) {
+  //     setPasswordError(
+  //       "비밀번호는 최소 하나의 숫자, 소문자를 포함해야 하며 8자 이상이어야 합니다."
+  //     );
+  //   } else {
+  //     setPasswordError("");
+  //   }
+
+  //   if (emailRegex.test(Email) && passwordRegex.test(Password)) {
+  //     setInputValid(true);
+  //   } else {
+  //     setInputValid(false);
+  //   }
+  // }, [Email, Password]);
 
   return (
     <SignWrap>
@@ -141,7 +150,7 @@ export default function Login() {
             onChange={onEmailHandler}
             placeholder="이메일"
           />
-          {EmailError && <div className="errorText">{EmailError}</div>}
+          {/* {EmailError && <div className="errorText">{EmailError}</div>} */}
           <input
             required
             type="password"
@@ -149,7 +158,7 @@ export default function Login() {
             onChange={onPasswordHandler}
             placeholder="비밀번호"
           />
-          {PasswordError && <div className="errorText">{PasswordError}</div>}
+          {/* {PasswordError && <div className="errorText">{PasswordError}</div>} */}
           <button
             type="submit"
             className={`defaultButton ${isInputValid ? "enabledButton" : ""}`}

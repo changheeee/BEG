@@ -16,9 +16,11 @@ const Logo = styled(Link)`
 
 export default function LogoButton({ nav }) {
   const imageUrl = nav ? "/images/logo_nav.svg" : "/images/logo_footer.svg";
-
+  const scrollTop = () => {
+    window.scrollTo(0, 0); // 페이지 변경 시 스크롤을 맨 위로 이동
+  };
   return (
-    <Logo to="/">
+    <Logo to="/" onClick={scrollTop}>
       <img src={imageUrl} alt="로고 이미지" />
     </Logo>
   );

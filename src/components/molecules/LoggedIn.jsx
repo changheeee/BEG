@@ -10,16 +10,16 @@ const LoggedInWrap = styled.div`
   font-size: 0.875rem;
 `;
 
-export default function LoggedIn({ loggedIn }) {
+export default function LoggedIn({ loggedIn, scrollTopAndCloseMenu }) {
   return (
     <LoggedInWrap>
       {loggedIn ? (
         <>
           <LogoutButton />
-          <MypageButton />
+          <MypageButton scrollTopAndCloseMenu={scrollTopAndCloseMenu} />
         </>
       ) : (
-        <LoginButton />
+        <LoginButton scrollTopAndCloseMenu={scrollTopAndCloseMenu} />
       )}
     </LoggedInWrap>
   );

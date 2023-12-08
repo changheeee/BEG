@@ -8,10 +8,12 @@ const LoginBtn = styled(Link)`
   letter-spacing: -0.04rem;
 `;
 
-export default function LoginButton() {
+export default function LoginButton({ scrollTopAndCloseMenu }) {
   return (
     <div>
-      <LoginBtn to="/login">LOGIN</LoginBtn>
+      <LoginBtn to="/login" onClick={scrollTopAndCloseMenu}>
+        LOGIN
+      </LoginBtn>
     </div>
   );
 }

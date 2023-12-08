@@ -28,20 +28,28 @@ const Menu = styled.ul`
   }
 `;
 
-export default function MenuButton() {
+export default function MenuButton({ scrollTopAndCloseMenu }) {
   return (
     <Menu>
       <li>
-        <Link to="/exhibition">공연・전시</Link>
+        <Link to="/exhibition" onClick={scrollTopAndCloseMenu}>
+          공연・전시
+        </Link>
       </li>
       <li>
-        <Link to="">공연・전시공간</Link>
+        <Link to="" onClick={scrollTopAndCloseMenu}>
+          공연・전시공간
+        </Link>
       </li>
       <li>
-        <Link to="/community">커뮤니티</Link>
+        <Link to="/community" onClick={scrollTopAndCloseMenu}>
+          커뮤니티
+        </Link>
       </li>
       <li>
-        <Link to="">소개</Link>
+        <Link to="" onClick={scrollTopAndCloseMenu}>
+          소개
+        </Link>
       </li>
     </Menu>
   );

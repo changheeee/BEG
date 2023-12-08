@@ -24,8 +24,14 @@ const MobileNavContainer = styled.div`
   backdrop-filter: blur(3px);
   border-bottom: 0.5px solid #ccc;
   .menu_ico {
+    cursor: pointer;
     font-size: 1.25rem;
     color: #555;
+
+    &:hover {
+      color: #000;
+      scale: 1.1;
+    }
   }
   > a {
     height: 25px;
@@ -45,16 +51,27 @@ const MobileMenu = styled.div`
   height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   background: #fefefeed;
   backdrop-filter: blur(3px);
 
+  .user_fnc {
+    align-self: flex-end;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+  }
   @media (min-width: 769px) {
     display: none;
   }
 `;
 
 function MobileNav({ toggleMenu, isMenuOpen }) {
+  const scrollTopAndCloseMenu = () => {
+    window.scrollTo(0, 0);
+    toggleMenu();
+  };
+
   return (
     <>
       <MobileNavContainer>
@@ -66,13 +83,19 @@ function MobileNav({ toggleMenu, isMenuOpen }) {
             <IoMenuOutline className="menu_ico" />
           )}
         </div>
+        {isMenuOpen && (
+          <MobileMenu>
+            <div className="user_fnc">
+              <LoggedIn scrollTopAndCloseMenu={scrollTopAndCloseMenu} />
+              <LoggedIn
+                loggedIn
+                scrollTopAndCloseMenu={scrollTopAndCloseMenu}
+              />
+            </div>
+            <MenuButton scrollTopAndCloseMenu={scrollTopAndCloseMenu} />
+          </MobileMenu>
+        )}
       </MobileNavContainer>
-      {isMenuOpen && (
-        <MobileMenu>
-          <MenuButton />
-          <LoggedIn />
-        </MobileMenu>
-      )}
     </>
   );
 }

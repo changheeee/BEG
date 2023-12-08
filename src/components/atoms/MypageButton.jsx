@@ -9,10 +9,12 @@ const MypageBtn = styled(Link)`
   letter-spacing: -0.04rem;
 `;
 
-export default function MypageButton() {
+export default function MypageButton({ scrollTopAndCloseMenu }) {
   return (
     <div>
-      <MypageBtn to="/mypage">MY</MypageBtn>
+      <MypageBtn to="/mypage" onClick={scrollTopAndCloseMenu}>
+        MY
+      </MypageBtn>
     </div>
   );
 }
