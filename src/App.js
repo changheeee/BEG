@@ -15,6 +15,7 @@ import ReviewDetail from "./components/template/ReviewDetail";
 import Login from "./components/template/Login";
 import Join from "./components/template/Join";
 import Mypage from "./components/template/Mypage";
+import LoadingPage from "./components/template/LoadingPage";
 
 const Wrapper = styled.div`
   padding-top: 80px;
@@ -37,7 +38,7 @@ const ContentWrapper = styled.div`
 export default function App() {
   return (
     <RecoilRoot>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingPage />}>
         <Router>
           <Wrapper>
             <GlobalStyles />
