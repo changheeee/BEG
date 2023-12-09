@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useNavigate, useDispatch } from "react";
 import { styled } from "styled-components";
-import { SectionContent, DetailContent } from "../atoms/SectionContent";
+import axios from "axios";
+
+// import { SectionContent, DetailContent } from "../atoms/SectionContent";
 import { Link } from "react-router-dom";
 
 const SignWrap = styled.div`
@@ -98,10 +100,23 @@ export default function Login() {
     setPassword(event.currentTarget.value);
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
-    // console.log(Email);
-    // console.log(Password);
+
+    const body = {
+      email: Email,
+      password: Password,
+    };
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/login`,
+        body
+      );
+      console.log("Login response: ", response);
+    } catch (error) {
+      console.error("Login error: ", error);
+      // console.log("Email: " + Email + "Password: " + Password);
+    }
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { fetchListState, fetchUserInfoState } from "../../stores/recoilState";
 
@@ -36,7 +36,6 @@ export default function Main() {
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
         <MainContent>
           <MainCarousel />
           <MainContentTitle>
@@ -70,7 +69,6 @@ export default function Main() {
 
           {exNow ? <MainNowEx data={data} /> : <MainUpcomingEx data={data} />}
         </MainContent>
-      </Suspense>
     </>
   );
 }

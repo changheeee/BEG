@@ -36,7 +36,7 @@ export default function MenuButton({ scrollTopAndCloseMenu }) {
         </Link>
       </li>
       <li>
-        <Link to="" onClick={scrollTopAndCloseMenu}>
+        <Link to="/location" onClick={scrollTopAndCloseMenu}>
           공연・전시공간
         </Link>
       </li>
