@@ -95,6 +95,8 @@ export default function CurrentExhibitions({ data }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [filteredData, setFilteredData] = useState([]); // 필터링된 데이터 추가
 
+  // 상태가 바뀌면 기다렸다가 실행시키면서 ... useMemo()변수 저장 useCallback()함수 저장
+  // 불필요한 렌더링을 줄일 수 있다. useMemo()
   useEffect(() => {
     // 카테고리 변경 시 필터링된 데이터 업데이트
     const filtered = data

@@ -134,6 +134,7 @@ export default function Kakaomap() {
       infowindow.open(map, marker);
     });
 
+    console.log("시작: " + new Date());
     // 장소 검색 및 마커 표시
     ps.categorySearch("CT1", placesSearchCB, { useMapBounds: true });
 
@@ -144,6 +145,7 @@ export default function Kakaomap() {
 
         // 각 장소에 대한 마커 표시
         data.forEach(displayMarker);
+        console.log("끝: " + new Date());
       }
     }
 

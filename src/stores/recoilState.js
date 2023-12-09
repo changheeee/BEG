@@ -58,3 +58,5 @@ export const fetchUserInfoState = selector({
     return data;
   },
 });
+
+//유저로그인 처리에 대한 상태 추가, 로그인이 되었는지 안되었는지.
