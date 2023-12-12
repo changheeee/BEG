@@ -16,6 +16,7 @@
     "react-dom": "18.2.0",
     "react-horizontal-datepicker": "^2.0.3",
     "react-icons": "^4.12.0",
+    "react-kakao-maps-sdk": "^1.1.24",
     "react-paginate": "^8.2.0",
     "react-quill": "^2.0.0",
     "react-responsive-carousel": "^3.2.23",

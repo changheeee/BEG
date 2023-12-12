@@ -4,6 +4,7 @@ import WriteButton from "../atoms/WriteButton";
 import { styled } from "styled-components";
 import BoardSortedButton from "../atoms/BoardSortedButton";
 import BoardList from "../atoms/BoardList";
+import Pagination from "../atoms/Pagination";
 
 const BoardHeader = styled.div`
   display: flex;
@@ -20,7 +21,11 @@ const BoardContent = styled.ul`
 
 export default function ReviewBoard({ data }) {
   const [sortType, setSortType] = useState("date");
+  const [currentPage, setCurrentPage] = useState(0);
+
   const POSTS = [...data];
+
+  const PER_PAGE = 5; //페이지에 보여줄 리스트 갯수
 
   let sortedData = [...POSTS];
 
@@ -30,6 +35,14 @@ export default function ReviewBoard({ data }) {
     sortedData.reverse();
   }
 
+  // 페이지네이션
+  const pageCount = Math.ceil(sortedData.length / PER_PAGE);
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <BoardHeader>
@@ -38,10 +51,19 @@ export default function ReviewBoard({ data }) {
         <WriteButton />
       </BoardHeader>
       <BoardContent>
-        {sortedData.map((item, index) => (
-          <BoardList key={index} item={item} />
-        ))}
+        {sortedData
+          .slice(currentPage * PER_PAGE, (currentPage + 1) * PER_PAGE)
+          .map((item, index) => (
+            <BoardList key={index} item={item} />
+          ))}
       </BoardContent>
+      {pageCount > 0 && (
+        <Pagination
+          pageCount={pageCount}
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+      )}
     </>
   );
 }

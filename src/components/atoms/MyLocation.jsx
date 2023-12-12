@@ -3,8 +3,9 @@ import styled from "styled-components";
 import axios from "axios";
 
 const MyLocationWrap = styled.div`
-  font-size: 0.875rem;
-  font-weight: 600;
+  margin-left: 1rem;
+  font-size: 1.125rem;
+  font-weight: 500;
   color: #888;
   letter-spacing: -0.04rem;
 `;
@@ -24,17 +25,18 @@ export default function MyLocation() {
           const { latitude, longitude } = position.coords;
 
           try {
-            // 구글 맵 Geocoding API 호출
+            // Kakao Map Geocoding API 호출
             const response = await axios.get(
-              //key뒤에 api키 붙여야함 나중에는 따로 관리
-              `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=`,
+              `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${longitude}&y=${latitude}`,
+              {
+                headers: {
+                  Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_MAP_REST_API}`,
+                },
+              }
             );
 
             // API 응답에서 주소 추출
-            let address = response.data.results[0].formatted_address;
-
-            // '대한민국'과 '515'를 제외한 중간 부분 추출
-            address = address.split(" ").slice(1, -1).join(" ");
+            let address = response.data.documents[0].address.address_name;
 
             setUserLocation({ latitude, longitude, address });
           } catch (error) {
@@ -43,7 +45,7 @@ export default function MyLocation() {
         },
         (error) => {
           console.error("Error getting user location:", error.message);
-        },
+        }
       );
     } else {
       console.error("Geolocation is not supported by this browser.");
@@ -61,7 +63,7 @@ export default function MyLocation() {
           {userLocation.address}
           <MyLocationIcon
             src="/images/ico_location_arrow.svg"
-            onClick={getUserLocation}
+            // onClick={getUserLocation}
           />
         </MyLocationWrap>
       )}

@@ -17,6 +17,7 @@ import Join from "./components/template/Join";
 import Mypage from "./components/template/Mypage";
 import LoadingPage from "./components/template/LoadingPage";
 import Location from "./components/template/Location";
+import LocationDetail from "./components/template/LocationDetail";
 
 const Wrapper = styled.div`
   padding-top: 80px;
@@ -56,6 +57,7 @@ export default function App() {
                 <Route path="/review_detail/:id" element={<ReviewDetail />} />
                 <Route path="/write" element={<Write />} />
                 <Route path="/location" element={<Location />} />
+                <Route path="/lo_detail/:id" element={<LocationDetail />} />
               </Routes>
             </ContentWrapper>
             <Footer />

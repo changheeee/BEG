@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import SortedButton from "../atoms/SortedButton";
 import Pagination from "../atoms/Pagination";
@@ -75,7 +75,7 @@ export default function ExCalendarTabMenu({ data, selectedDate }) {
   if (sortType === "bookmarked") {
     sortedData.sort((a, b) => b.bookmarked - a.bookmarked);
   } else {
-    sortedData.reverse();
+    sortedData.reverse(); //최신순 정렬
   }
 
   const filteredData = sortedData.filter(

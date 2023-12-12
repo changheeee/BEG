@@ -13,7 +13,7 @@
     {
       "id": 1,
       "title": "연극 2023",
-      "location": "영영",
+      "location": "효로인디아트홀",
       "start": "2023.11.02",
       "end": "2023.12.08",
       "category": "연극",
@@ -33,7 +33,7 @@
     {
       "id": 3,
       "title": "클래식 Project 2023",
-      "location": "영영",
+      "location": "CGV 아시아드",
       "start": "2023.11.02",
       "end": "2023.12.08",
       "category": "클래식",
@@ -43,7 +43,7 @@
     {
       "id": 4,
       "title": "전통예술 Project 2023",
-      "location": "영영",
+      "location": "CGV 아시아드",
       "start": "2023.11.02",
       "end": "2023.12.08",
       "category": "전통예술",
@@ -53,7 +53,7 @@
     {
       "id": 5,
       "title": "무용 Project 2023",
-      "location": "영영",
+      "location": "CGV 아시아드",
       "start": "2023.11.02",
       "end": "2023.12.08",
       "category": "무용",
@@ -63,7 +63,7 @@
     {
       "id": 6,
       "title": "오페라 Project 2023",
-      "location": "영영",
+      "location": "CGV 아시아드",
       "start": "2023.11.02",
       "end": "2023.12.08",
       "category": "오페라",
@@ -73,7 +73,7 @@
     {
       "id": 7,
       "title": "기타 Project 2023",
-      "location": "영영",
+      "location": "CGV 아시아드",
       "start": "2023.11.02",
       "end": "2023.12.08",
       "category": "기타",
@@ -192,6 +192,21 @@
       "likes": 18,
       "posted_at": "2023-11-22",
       "recommended": true
+    }
+  ],
+  "location": [
+    {
+      "id": 0,
+      "place_nm": "CGV 아시아드",
+      "place_adress": "부산광역시 연제구 종합운동장로 7(거제동)",
+      "place_description": "부산광역시 연제구 거제동에 위치. 코로나 19로 인해 관객이 줄어든 김에 2020년 7월 17일 리뉴얼 공사를 마친 후 재오픈 하였다. 구 프리머스시네마 아시아드. 2009년에 CGV로 전환되었다. 독특하게도 마트(홈플러스 아시아드점) B2층에 위치하고 있는 극장이다. 상영관이 총 8관이고, 좌석 수는 1,383석으로 좌석 수가 좀 있는 편이다. 그리고 유일하게 4DX관이 8관에 있다.",
+      "place_opened_year": 2009,
+      "place_venues": 11,
+      "place_character": "민간",
+      "place_capacity": 300,
+      "place_call_number": "051-000-0000",
+      "place_homepage": "https://www.naver.com",
+      "place_img": "/images/lo_img_01.png"
     }
   ]
 }

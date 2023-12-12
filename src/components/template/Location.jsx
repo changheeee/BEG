@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { SectionContent } from "../atoms/SectionContent";
 import SectionHeader from "../molecules/SectionHeader";
-// import LoMinimap from "../organisms/LoMinimap";
-// import LoInfo from "../molecules/LoInfo";
-import LoIngEx from "../molecules/LoIngEx";
+import { LocationContentTitle } from "../atoms/ContentTitle";
+import MyLocation from "../atoms/MyLocation";
+
+import LoIngEx from "../atoms/LoIngEx";
 import Kakaomap from "../organisms/Kakaomap";
 
 export default function Location() {
@@ -11,10 +12,11 @@ export default function Location() {
     <>
       <SectionHeader location />
       <SectionContent>
-        {/* <LoMinimap /> */}
-        {/* <LoInfo /> */}
+        <LocationContentTitle>
+          <h3>내 주변 문화시설</h3>
+          <MyLocation />
+        </LocationContentTitle>
         <Kakaomap />
-        <LoIngEx />
       </SectionContent>
     </>
   );

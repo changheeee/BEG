@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import MOCK_DATA from "../../MOCK_DATA.json";
 import { styled } from "styled-components";
 
 import CategoryBadge from "../atoms/CategoryBadge";
@@ -109,6 +108,7 @@ export default function ExInfo({ data }) {
           </div>
           <div className="bookmark">
             {/* 북마크 여부 확인 해서 .. props를 전달? */}
+
             <BookmarkButton />
           </div>
           <h4 className="title">《 {data.title} 》</h4>
