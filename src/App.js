@@ -18,6 +18,7 @@ import Mypage from "./components/template/Mypage";
 import LoadingPage from "./components/template/LoadingPage";
 import Location from "./components/template/Location";
 import LocationDetail from "./components/template/LocationDetail";
+import SearchResult from "./components/template/SearchResult";
 
 const Wrapper = styled.div`
   padding-top: 80px;
@@ -58,6 +59,7 @@ export default function App() {
                 <Route path="/write" element={<Write />} />
                 <Route path="/location" element={<Location />} />
                 <Route path="/lo_detail/:id" element={<LocationDetail />} />
+                <Route path="/search_result/:id" element={<SearchResult />} />
               </Routes>
             </ContentWrapper>
             <Footer />

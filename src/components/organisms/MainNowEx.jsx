@@ -130,9 +130,7 @@ export default function MainNowEx({ data }) {
     <MainExWrap>
       <Slider ref={sliderRef} {...settings}>
         {limitedList.map((item, index) => (
-          <>
-            <MainExList key={index} item={item} />
-          </>
+          <MainExList key={index} item={item} />
         ))}
       </Slider>
     </MainExWrap>

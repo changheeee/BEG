@@ -39,9 +39,6 @@ const CategoryTab = styled.ul`
 
 export const ExhibitionListWrap = styled.ul`
   margin-top: 1.25rem;
-  /* display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;

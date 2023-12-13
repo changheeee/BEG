@@ -55,6 +55,7 @@ export default function SectionHeader({
   community,
   search,
   mypage,
+  searchKeyword,
 }) {
   let bgType = "";
   let sectionTitle = "";
@@ -76,5 +77,11 @@ export default function SectionHeader({
     sectionTitle = "마이페이지";
   }
 
-  return <SectionHeaderWrap bgtype={bgType}>{sectionTitle}</SectionHeaderWrap>;
+  return !searchKeyword ? (
+    <SectionHeaderWrap bgtype={bgType}>{sectionTitle}</SectionHeaderWrap>
+  ) : (
+    <SectionHeaderWrap bgtype={bgType}>
+      "{searchKeyword}" 에 대한 {sectionTitle}
+    </SectionHeaderWrap>
+  );
 }

@@ -14,6 +14,13 @@ const SearchInputWrap = styled.div`
   border-radius: 5px;
   padding: 0 0.3em;
 
+  input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
   button {
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
@@ -22,14 +29,23 @@ const SearchInputWrap = styled.div`
   }
 `;
 
-export default function SearchInput({ toggleSearch }) {
+export default function SearchInput({
+  toggleSearch,
+  inputRef,
+  handleKeyPress,
+}) {
   return (
     <SearchInputWrap>
       <img
         src="/images/ico_search_placeholder.svg"
         style={{ height: ".875rem", marginRight: ".25rem" }}
       />
-      <input type="text" placeholder="공연・전시 검색" />
+      <input
+        type="text"
+        placeholder="공연・전시 검색"
+        ref={inputRef}
+        onKeyPress={handleKeyPress}
+      />
       <button onClick={toggleSearch}>X</button>
     </SearchInputWrap>
   );
