@@ -65,13 +65,14 @@ https://busanexhibitionguide.netlify.app/
         </tr>
         <tr>
           <th>페이지네이션</th>
-          <th></th>
+          <th>공연・전시 검색</th>
         </tr>
         <tr>
           <td align="center">
             <img src="https://github.com/changheeee/BEG/assets/117338992/ec369ef2-a0a8-45ee-ad15-28b05f652c9a"/>
           </td>
           <td align="center">
+            <img src="https://github.com/changheeee/BEG/assets/117338992/be87f167-98f3-49a9-9909-baa4988b7a68"/>    
           </td>
         </tr>
       </tbody>
