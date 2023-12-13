@@ -29,11 +29,7 @@ const SearchInputWrap = styled.div`
   }
 `;
 
-export default function SearchInput({
-  toggleSearch,
-  inputRef,
-  handleKeyPress,
-}) {
+export default function SearchInput({ toggleSearch, inputRef, handleKeyDown }) {
   return (
     <SearchInputWrap>
       <img
@@ -44,7 +40,7 @@ export default function SearchInput({
         type="text"
         placeholder="공연・전시 검색"
         ref={inputRef}
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleKeyDown}
       />
       <button onClick={toggleSearch}>X</button>
     </SearchInputWrap>

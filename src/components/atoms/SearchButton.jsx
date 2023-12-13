@@ -31,12 +31,12 @@ export default function SearchButton() {
     navigate(`/search_result/${searchTerm}`);
   };
 
-  const handleKeyPress = (event) => {
+  const handleKeyDown = (event) => {
     if (event.key === "Enter" && inputRef.current.value.length >= 2) {
       // 엔터 키를 눌렀고, 검색어가 2글자 이상일 때 검색 결과 페이지로 이동
       handleSearch(inputRef.current.value);
+      setShowSearch(!showSearch);
     }
-    setShowSearch(!showSearch);
   };
 
   return (
@@ -46,7 +46,7 @@ export default function SearchButton() {
         <SearchInput
           toggleSearch={toggleSearch}
           inputRef={inputRef}
-          handleKeyPress={handleKeyPress}
+          handleKeyDown={handleKeyDown}
         />
       )}
     </SearchWrap>

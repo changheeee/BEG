@@ -26,7 +26,7 @@ export default function SearchResult() {
           <>
             <p
               style={{
-                borderBottom: "1.5px solid #999",
+                borderBottom: "1.5px solid #ddd",
                 paddingBottom: "0.5rem",
               }}
             >
