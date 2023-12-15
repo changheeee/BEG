@@ -89,7 +89,7 @@ export default function LocationDetail() {
   const imageUrl = data.place_img;
   console.log(imageUrl);
   return (
-    <PlaceDetailWrap imageUrl={imageUrl}>
+    <PlaceDetailWrap>
       {/* <DetailContent>{data.place_nm}</DetailContent> */}
       <div className="detail_info">
         <img className="detail_bg" src={imageUrl} alt="" />

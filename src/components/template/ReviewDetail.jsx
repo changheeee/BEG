@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+
+import { useRecoilValue } from "recoil";
+import { fetchPostsState, fetchListState } from "../../stores/recoilState";
 import { styled } from "styled-components";
 import SectionHeader from "../molecules/SectionHeader";
 import { SectionContent, DetailContent } from "../atoms/SectionContent";
-import MOCK_DATA from "../../MOCK_DATA.json";
+
 import RecommendedButton from "../atoms/RecommendButton";
 import PostButton from "../atoms/PostButton";
 
@@ -11,8 +14,11 @@ const DetailHeader = styled.div`
   > strong {
     //전시제목
     font-size: 0.875rem;
-    color: #888;
     font-weight: 500;
+
+    a {
+      color: #888;
+    }
   }
   > h4 {
     //게시글 제목
@@ -91,14 +97,31 @@ const EditButton = styled(PostButton)`
 
 export default function ReviewDetail() {
   const { id } = useParams();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
+  const [exId, setExId] = useState();
+  const postsData = useRecoilValue(fetchPostsState);
+  const listData = useRecoilValue(fetchListState);
   const [isRecommended, setIsRecommended] = useState(false);
 
   useEffect(() => {
-    const foundData = MOCK_DATA.posts.find((item) => item.id === parseInt(id));
-    setData(foundData);
-    setIsRecommended(foundData.recommended);
-  }, [id]);
+    const foundPostData = postsData.find((item) => item.id === parseInt(id));
+    setIsRecommended(foundPostData.recommended);
+    setData(foundPostData);
+
+    // foundListData가 정의되어 있는지 확인 후에 속성에 접근
+    const foundListData = listData.find(
+      (item) => item.title === foundPostData.ex_title
+    );
+
+    if (foundListData) {
+      setExId(foundListData.id);
+    } else {
+      // foundListData가 정의되지 않은 경우, exId에 기본값을 설정하거나 상황에 맞게 처리
+      setExId(/* 기본값 설정이나 상황에 따라 처리 */);
+    }
+  }, [id, postsData, listData]);
+
+  //
 
   if (!data) return null;
 
@@ -106,13 +129,14 @@ export default function ReviewDetail() {
   //   const toggleRecommend = () => {
   //     setIsRecommended(?);
   //   };
-
   return (
     <>
       <SectionHeader community />
       <DetailContent>
         <DetailHeader>
-          <strong>{data.ex_title}</strong>
+          <strong>
+            <Link to={`/ex_detail/${exId}`}>{data.ex_title}</Link>
+          </strong>
           <h4>{data.title}</h4>
           <div className="post-info">
             <div className="post-info-item">

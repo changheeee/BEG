@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import Pagination from "../atoms/Pagination";
 import { ListContainer, ListTr } from "../atoms/LocationContent";
 import LoIngEx from "../atoms/LoIngEx";
-import MOCK_DATA from "../../MOCK_DATA.json";
 
 export default function LocationList({ psList, keyword, setKeyword }) {
   // 현재 페이지를 저장하는 state

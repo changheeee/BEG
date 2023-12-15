@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
-import data from "../../MOCK_DATA.json";
+import { useRecoilValue } from "recoil";
+import { fetchListState } from "../../stores/recoilState";
 import ListVertical from "../molecules/ListVertical";
 
 const LoExListWrap = styled.div`
@@ -53,7 +54,25 @@ const LoExList = styled.ul`
 `;
 
 export default function LoIngEx({ keyword }) {
-  const filteredData = data.list.filter((item) => item.location === keyword);
+  //리스트 데이터
+  const data = useRecoilValue(fetchListState);
+  //리스트 데이터 날짜 포맷
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split(".");
+    return new Date(`${year}-${month}-${day}`);
+  };
+
+  //키워드에 포함되고 현재 진행중인 공연,전시데이터 필터링
+  const filteredData = useMemo(() => {
+    return data.filter(
+      (item) =>
+        item.location === keyword &&
+        formatDate(item.start) <= new Date() &&
+        formatDate(item.end) >= new Date()
+    );
+  }, [data, keyword]);
+
+  console.log(filteredData);
 
   return (
     <LoExListWrap>

@@ -207,6 +207,19 @@
       "place_call_number": "051-000-0000",
       "place_homepage": "https://www.naver.com",
       "place_img": "/images/lo_img_01.png"
+    },
+    {
+      "id": 1,
+      "place_nm": "엠스테이지",
+      "place_adress": "부산광역시 연제구 월드컵대로 190(거제동) 지하1층 부산엠스테이지",
+      "place_description": "",
+      "place_opened_year": 2009,
+      "place_venues": 11,
+      "place_character": "민간",
+      "place_capacity": 300,
+      "place_call_number": "051-000-0000",
+      "place_homepage": "https://www.naver.com",
+      "place_img": "/images/lo_img_01.png"
     }
   ]
 }
