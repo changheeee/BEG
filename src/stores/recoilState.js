@@ -1,6 +1,23 @@
 import { atom, selector } from "recoil";
 import axios from "axios";
 
+export const testState = atom({
+  key: "testState",
+  default: [],
+});
+
+export const fetchTestState = selector({
+  key: "fetchTestState",
+  get: async () => {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/exhibitions`
+    );
+
+    const data = response.data;
+    return data;
+  },
+});
+
 // List에 대한 Atom
 export const listState = atom({
   key: "listState",

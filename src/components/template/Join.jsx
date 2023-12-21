@@ -211,6 +211,7 @@ export default function Join() {
           <input
             required
             className="text_input"
+            name="name"
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
@@ -222,6 +223,7 @@ export default function Join() {
           <input
             required
             className="text_input"
+            name="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -245,6 +247,7 @@ export default function Join() {
           <input
             required
             className="text_input"
+            name="password1"
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -256,6 +259,7 @@ export default function Join() {
           <input
             required
             className="text_input"
+            name="password2"
             type={showPassword ? "text" : "password"}
             value={passwordConfirm}
             onChange={(e) => setPasswordConfirm(e.target.value)}
@@ -269,6 +273,7 @@ export default function Join() {
           <input
             required
             className="text_input"
+            name="nickname"
             type="text"
             value={nickName}
             onChange={(e) => setNickName(e.target.value)}

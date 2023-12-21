@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { fetchListState, fetchUserInfoState } from "../../stores/recoilState";
+import { fetchListState, fetchTestState } from "../../stores/recoilState";
 
 import { MainContent } from "../atoms/SectionContent";
 import MainCarousel from "../organisms/MainCarousel";
@@ -13,8 +13,10 @@ import MainNowEx from "../organisms/MainNowEx";
 import MainUpcomingEx from "../organisms/MainUpcomingEx";
 
 export default function Main() {
+  const testData = useRecoilValue(fetchTestState);
+  console.log(testData);
   const data = useRecoilValue(fetchListState);
-
+  console.log(data);
   const [exNow, setExnow] = useState(true);
   const exNowHandler = () => {
     setExnow(!exNow);
@@ -36,39 +38,55 @@ export default function Main() {
 
   return (
     <>
-        <MainContent>
-          <MainCarousel />
-          <MainContentTitle>
-            <h3 style={{ marginTop: "80px" }}>전시 랭킹</h3>
-          </MainContentTitle>
-          <MainExBest />
-          <MainContentTitle>
-            <h3 style={{ marginTop: "100px" }}>전시 캘린더</h3>
-            <MoreButton />
-          </MainContentTitle>
-          <MainDatePick />
-          <MainContentTitle>
-            <h3 style={{ marginTop: "100px", display: "flex" }}>
-              <p
-                style={{
-                  ...(exNow ? activeStyle : inactiveStyle),
-                  marginRight: "1rem",
-                }}
-                onClick={exNowHandler}
-              >
-                지금 볼만한 전시
-              </p>
-              <p
-                style={!exNow ? activeStyle : inactiveStyle}
-                onClick={exNowHandler}
-              >
-                다가오는 전시
-              </p>
-            </h3>
-          </MainContentTitle>
+      <MainContent>
+        <MainCarousel />
+        <MainContentTitle>
+          <h3 style={{ marginTop: "80px" }}>전시 랭킹</h3>
+        </MainContentTitle>
+        <MainExBest />
+        <MainContentTitle>
+          <h3 style={{ marginTop: "100px" }}>전시 캘린더</h3>
+          <MoreButton />
+        </MainContentTitle>
+        <MainDatePick />
+        <MainContentTitle>
+          <h3 style={{ marginTop: "100px", display: "flex" }}>
+            <p
+              style={{
+                ...(exNow ? activeStyle : inactiveStyle),
+                marginRight: "1rem",
+              }}
+              onClick={exNowHandler}
+            >
+              지금 볼만한 전시
+            </p>
+            <p
+              style={!exNow ? activeStyle : inactiveStyle}
+              onClick={exNowHandler}
+            >
+              다가오는 전시
+            </p>
+          </h3>
+        </MainContentTitle>
 
-          {exNow ? <MainNowEx data={data} /> : <MainUpcomingEx data={data} />}
-        </MainContent>
+        {exNow ? <MainNowEx data={data} /> : <MainUpcomingEx data={data} />}
+      </MainContent>
+
+      {/* TEST */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <h3 style={{ fontSize: "2rem" }}>TEST</h3>
+        {testData.map((item, index) => (
+          <div key={index}>
+            <h4 style={{ fontSize: "1.5rem" }}>DATA{index}</h4>
+            <ul>
+              <li>Category:{item.category ? item.category.name : null}</li>
+              <li>Title: {item.title}</li>
+              <li>AvgStar: {item.avg_star}</li>
+              <li>Price: {item.price}</li>
+            </ul>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
