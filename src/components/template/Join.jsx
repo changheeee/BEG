@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { RxEyeOpen, RxEyeClosed } from "react-icons/rx";
-
+import axios from "axios";
 const SignUpWrap = styled.div`
   width: 400px;
   padding: 50px 0 100px 0;
@@ -198,8 +198,22 @@ export default function Join() {
       return;
     }
 
-    // Perform signup logic here
-    alert("회원가입 성공!");
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/user`, {
+        email,
+        userName,
+        nickName,
+        password,
+        selectedDate,
+        gender,
+      })
+      .then((response) => {
+        alert("회원가입 성공!");
+      })
+      .catch((error) => {
+        console.error("Error during signup:", error);
+        alert("회원가입 중 오류가 발생했습니다.");
+      });
   };
 
   return (

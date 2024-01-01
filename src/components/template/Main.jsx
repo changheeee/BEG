@@ -73,7 +73,7 @@ export default function Main() {
       </MainContent>
 
       {/* TEST */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      {/* <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <h3 style={{ fontSize: "2rem" }}>TEST</h3>
         {testData.map((item, index) => (
           <div key={index}>
@@ -86,7 +86,7 @@ export default function Main() {
             </ul>
           </div>
         ))}
-      </div>
+      </div> */}
     </>
   );
 }
