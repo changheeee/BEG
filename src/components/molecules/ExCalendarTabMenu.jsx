@@ -4,39 +4,11 @@ import SortedButton from "../atoms/SortedButton";
 import Pagination from "../atoms/Pagination";
 import ListVertical from "./ListVertical";
 import { ExhibitionListWrap } from "./CurrentExhibitions";
+import { CategoryTab } from "./CurrentExhibitions";
 
 const SortedWrap = styled.div`
   display: flex;
   justify-content: flex-end;
-`;
-
-const CategoryTab = styled.ul`
-  margin: 0.75rem 0;
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-
-  overflow-x: scroll;
-  scrollbar-width: 0;
-  scrollbar-color: transparent transparent;
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    height: 0;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
-
-  > li {
-    font-weight: 500;
-    font-size: 1.125rem;
-    cursor: pointer;
-    white-space: nowrap;
-  }
 `;
 
 const CATEGORIES = [

@@ -9,27 +9,23 @@ const TodayAndSorted = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const CategoryTab = styled.ul`
-  margin: 0.75rem 0;
-  display: flex;
-  gap: 1rem;
+export const CategoryTab = styled.ul`
   padding: 1rem 0;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   overflow-x: scroll;
-  scrollbar-width: 0;
-  scrollbar-color: transparent transparent;
-  -ms-overflow-style: none;
-
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
   &::-webkit-scrollbar {
-    height: 0;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
+    display: none;
   }
 
   > li {
+    height: 100%;
     font-weight: 500;
     font-size: 1.125rem;
     cursor: pointer;

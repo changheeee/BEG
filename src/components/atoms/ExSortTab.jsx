@@ -6,6 +6,7 @@ const ExSortTabWrap = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 0.75rem;
 `;
 
 const ExSortTitle = styled.div`
