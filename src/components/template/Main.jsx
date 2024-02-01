@@ -13,8 +13,8 @@ import MainNowEx from "../organisms/MainNowEx";
 import MainUpcomingEx from "../organisms/MainUpcomingEx";
 
 export default function Main() {
-  const testData = useRecoilValue(fetchTestState);
-  console.log(testData);
+  // const testData = useRecoilValue(fetchTestState);
+  // console.log(testData);
   const data = useRecoilValue(fetchListState);
   console.log(data);
   const [exNow, setExnow] = useState(true);
